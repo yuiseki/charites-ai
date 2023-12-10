@@ -1,0 +1,18 @@
+id: road_area_pier
+type: fill
+metadata: {}
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - $type
+    - Polygon
+  - - '=='
+    - class
+    - pier
+layout:
+  visibility: visible
+paint:
+  fill-antialias: true
+  fill-color: '#f8f4f0'

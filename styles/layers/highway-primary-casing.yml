@@ -1,0 +1,42 @@
+id: highway-primary-casing
+type: line
+metadata:
+  mapbox:group: '1444849345966.4436'
+source: openmaptiles
+source-layer: transportation
+minzoom: 5
+filter:
+  - all
+  - - '!in'
+    - brunnel
+    - bridge
+    - tunnel
+  - - in
+    - class
+    - primary
+  - - '!='
+    - ramp
+    - 1
+layout:
+  line-cap: butt
+  line-join: round
+  visibility: visible
+paint:
+  line-color: '#e9ac77'
+  line-opacity:
+    stops:
+      - - 7
+        - 0
+      - - 8
+        - 1
+  line-width:
+    base: 1.2
+    stops:
+      - - 7
+        - 0
+      - - 8
+        - 0.6
+      - - 9
+        - 1.5
+      - - 20
+        - 22

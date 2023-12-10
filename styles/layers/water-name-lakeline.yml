@@ -1,0 +1,24 @@
+id: water-name-lakeline
+type: symbol
+source: openmaptiles
+source-layer: water_name
+filter:
+  - '=='
+  - $type
+  - LineString
+layout:
+  symbol-placement: line
+  symbol-spacing: 350
+  text-field: |-
+    {name:latin}
+    {name:nonlatin}
+  text-font:
+    - Open Sans Italic
+  text-letter-spacing: 0.2
+  text-max-width: 5
+  text-rotation-alignment: map
+  text-size: 14
+paint:
+  text-color: '#74aee9'
+  text-halo-color: rgba(255,255,255,0.7)
+  text-halo-width: 1.5

@@ -1,0 +1,26 @@
+id: aeroway-runway-casing
+type: line
+metadata:
+  mapbox:group: '1444849345966.4436'
+source: openmaptiles
+source-layer: aeroway
+minzoom: 12
+filter:
+  - all
+  - - in
+    - class
+    - runway
+layout:
+  line-cap: round
+  line-join: round
+  visibility: visible
+paint:
+  line-color: rgba(153, 153, 153, 1)
+  line-opacity: 1
+  line-width:
+    base: 1.5
+    stops:
+      - - 11
+        - 5
+      - - 17
+        - 55

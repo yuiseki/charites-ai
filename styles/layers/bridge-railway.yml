@@ -1,0 +1,25 @@
+id: bridge-railway
+type: line
+metadata:
+  mapbox:group: '1444849334699.1902'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - brunnel
+    - bridge
+  - - '=='
+    - class
+    - rail
+paint:
+  line-color: '#bbb'
+  line-width:
+    base: 1.4
+    stops:
+      - - 14
+        - 0.4
+      - - 15
+        - 0.75
+      - - 20
+        - 2

@@ -1,0 +1,36 @@
+id: highway-primary
+type: line
+metadata:
+  mapbox:group: '1444849345966.4436'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - $type
+    - LineString
+  - - '!in'
+    - brunnel
+    - bridge
+    - tunnel
+  - - in
+    - class
+    - primary
+  - - '!='
+    - ramp
+    - 1
+layout:
+  line-cap: round
+  line-join: round
+  visibility: visible
+paint:
+  line-color: '#fea'
+  line-width:
+    base: 1.2
+    stops:
+      - - 8.5
+        - 0
+      - - 9
+        - 0.5
+      - - 20
+        - 18

@@ -1,0 +1,23 @@
+id: landuse-residential
+type: fill
+metadata:
+  mapbox:group: '1444849388993.3071'
+source: openmaptiles
+source-layer: landuse
+filter:
+  - all
+  - - in
+    - class
+    - residential
+    - suburb
+    - neighbourhood
+layout:
+  visibility: visible
+paint:
+  fill-color:
+    base: 1
+    stops:
+      - - 12
+        - hsla(30, 19%, 90%, 0.4)
+      - - 16
+        - hsla(30, 19%, 90%, 0.2)

@@ -1,0 +1,38 @@
+id: tunnel-minor-casing
+type: line
+metadata:
+  mapbox:group: '1444849354174.1904'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - brunnel
+    - tunnel
+  - - '=='
+    - class
+    - minor
+layout:
+  line-join: round
+paint:
+  line-color: '#cfcdca'
+  line-opacity:
+    stops:
+      - - 12
+        - 0
+      - - 12.5
+        - 1
+  line-width:
+    base: 1.2
+    stops:
+      - - 12
+        - 0.5
+      - - 13
+        - 1
+      - - 14
+        - 4
+      - - 20
+        - 15
+  line-dasharray:
+    - 0.5
+    - 0.25

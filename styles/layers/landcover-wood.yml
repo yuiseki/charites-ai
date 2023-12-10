@@ -1,0 +1,21 @@
+id: landcover-wood
+type: fill
+metadata:
+  mapbox:group: '1444849388993.3071'
+source: openmaptiles
+source-layer: landcover
+filter:
+  - '=='
+  - class
+  - wood
+paint:
+  fill-antialias:
+    base: 1
+    stops:
+      - - 0
+        - false
+      - - 9
+        - true
+  fill-color: '#6a4'
+  fill-opacity: 0.1
+  fill-outline-color: hsla(0, 0%, 0%, 0.03)

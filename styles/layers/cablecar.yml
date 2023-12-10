@@ -1,0 +1,21 @@
+id: cablecar
+type: line
+source: openmaptiles
+source-layer: transportation
+minzoom: 13
+filter:
+  - '=='
+  - subclass
+  - cable_car
+layout:
+  line-cap: round
+  visibility: visible
+paint:
+  line-color: hsl(0, 0%, 70%)
+  line-width:
+    base: 1
+    stops:
+      - - 11
+        - 1
+      - - 19
+        - 2.5

@@ -1,0 +1,30 @@
+id: waterway_tunnel
+type: line
+source: openmaptiles
+source-layer: waterway
+minzoom: 14
+filter:
+  - all
+  - - in
+    - class
+    - river
+    - stream
+    - canal
+  - - '=='
+    - brunnel
+    - tunnel
+layout:
+  line-cap: round
+  visibility: visible
+paint:
+  line-color: '#a0c8f0'
+  line-dasharray:
+    - 2
+    - 4
+  line-width:
+    base: 1.3
+    stops:
+      - - 13
+        - 0.5
+      - - 20
+        - 6

@@ -1,0 +1,14 @@
+id: landuse-railway
+type: fill
+metadata:
+  mapbox:group: '1444849388993.3071'
+source: openmaptiles
+source-layer: landuse
+filter:
+  - '=='
+  - class
+  - railway
+layout:
+  visibility: visible
+paint:
+  fill-color: hsla(30, 19%, 90%, 0.4)

@@ -1,0 +1,43 @@
+id: poi-railway
+type: symbol
+source: openmaptiles
+source-layer: poi
+minzoom: 13
+filter:
+  - all
+  - - '=='
+    - $type
+    - Point
+  - - has
+    - name
+  - - '=='
+    - class
+    - railway
+  - - '=='
+    - subclass
+    - station
+layout:
+  icon-allow-overlap: false
+  icon-ignore-placement: false
+  icon-image: '{class}_11'
+  icon-optional: false
+  text-allow-overlap: false
+  text-anchor: top
+  text-field: |-
+    {name:latin}
+    {name:nonlatin}
+  text-font:
+    - Open Sans Regular
+  text-ignore-placement: false
+  text-max-width: 9
+  text-offset:
+    - 0
+    - 0.6
+  text-optional: true
+  text-padding: 2
+  text-size: 12
+paint:
+  text-color: '#666'
+  text-halo-blur: 0.5
+  text-halo-color: '#ffffff'
+  text-halo-width: 1

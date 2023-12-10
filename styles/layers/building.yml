@@ -1,0 +1,15 @@
+id: building
+type: fill
+metadata:
+  mapbox:group: '1444849364238.8171'
+source: openmaptiles
+source-layer: building
+paint:
+  fill-antialias: true
+  fill-color:
+    base: 1
+    stops:
+      - - 15.5
+        - '#f2eae2'
+      - - 16
+        - '#dfdbd7'

@@ -1,0 +1,18 @@
+id: ferry
+type: line
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - in
+    - class
+    - ferry
+layout:
+  line-join: round
+  visibility: visible
+paint:
+  line-color: rgba(108, 159, 182, 1)
+  line-dasharray:
+    - 2
+    - 2
+  line-width: 1.1

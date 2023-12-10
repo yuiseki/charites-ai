@@ -1,0 +1,18 @@
+id: landuse-industrial
+type: fill
+source: openmaptiles
+source-layer: landuse
+filter:
+  - all
+  - - '=='
+    - $type
+    - Polygon
+  - - in
+    - class
+    - industrial
+    - garages
+    - dam
+layout:
+  visibility: visible
+paint:
+  fill-color: hsla(49, 100%, 88%, 0.34)

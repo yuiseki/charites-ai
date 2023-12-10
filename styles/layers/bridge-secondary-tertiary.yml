@@ -1,0 +1,31 @@
+id: bridge-secondary-tertiary
+type: line
+metadata:
+  mapbox:group: '1444849334699.1902'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - brunnel
+    - bridge
+  - - in
+    - class
+    - secondary
+    - tertiary
+  - - '!='
+    - ramp
+    - 1
+layout:
+  line-join: round
+paint:
+  line-color: '#fea'
+  line-width:
+    base: 1.2
+    stops:
+      - - 6.5
+        - 0
+      - - 8
+        - 0.5
+      - - 20
+        - 13

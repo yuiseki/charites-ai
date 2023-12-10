@@ -1,0 +1,21 @@
+id: landcover-glacier
+type: fill
+metadata:
+  mapbox:group: '1444849388993.3071'
+source: openmaptiles
+source-layer: landcover
+filter:
+  - '=='
+  - subclass
+  - glacier
+layout:
+  visibility: visible
+paint:
+  fill-color: '#fff'
+  fill-opacity:
+    base: 1
+    stops:
+      - - 0
+        - 0.9
+      - - 10
+        - 0.3

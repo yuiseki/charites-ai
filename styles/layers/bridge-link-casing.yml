@@ -1,0 +1,36 @@
+id: bridge-link-casing
+type: line
+metadata:
+  mapbox:group: '1444849334699.1902'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - brunnel
+    - bridge
+  - - in
+    - class
+    - trunk
+    - primary
+    - secondary
+    - tertiary
+  - - '=='
+    - ramp
+    - 1
+layout:
+  line-join: round
+paint:
+  line-color: '#e9ac77'
+  line-opacity: 1
+  line-width:
+    base: 1.2
+    stops:
+      - - 12
+        - 1
+      - - 13
+        - 3
+      - - 14
+        - 4
+      - - 20
+        - 19

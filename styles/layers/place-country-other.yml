@@ -1,0 +1,34 @@
+id: place-country-other
+type: symbol
+metadata:
+  mapbox:group: '1444849242106.713'
+source: openmaptiles
+source-layer: place
+filter:
+  - all
+  - - '=='
+    - class
+    - country
+  - - '>='
+    - rank
+    - 3
+  - - '!has'
+    - iso_a2
+layout:
+  text-field: '{name:latin}'
+  text-font:
+    - Open Sans Italic
+  text-max-width: 6.25
+  text-size:
+    stops:
+      - - 3
+        - 11
+      - - 7
+        - 17
+  text-transform: uppercase
+  visibility: visible
+paint:
+  text-color: '#334'
+  text-halo-blur: 1
+  text-halo-color: rgba(255,255,255,0.8)
+  text-halo-width: 2

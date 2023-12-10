@@ -1,0 +1,24 @@
+id: cablecar-dash
+type: line
+source: openmaptiles
+source-layer: transportation
+minzoom: 13
+filter:
+  - '=='
+  - subclass
+  - cable_car
+layout:
+  line-cap: round
+  visibility: visible
+paint:
+  line-color: hsl(0, 0%, 70%)
+  line-dasharray:
+    - 2
+    - 3
+  line-width:
+    base: 1
+    stops:
+      - - 11
+        - 3
+      - - 19
+        - 5.5

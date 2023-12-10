@@ -1,0 +1,31 @@
+id: bridge-trunk-primary
+type: line
+metadata:
+  mapbox:group: '1444849334699.1902'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - brunnel
+    - bridge
+  - - in
+    - class
+    - primary
+    - trunk
+  - - '!='
+    - ramp
+    - 1
+layout:
+  line-join: round
+paint:
+  line-color: '#fea'
+  line-width:
+    base: 1.2
+    stops:
+      - - 6.5
+        - 0
+      - - 7
+        - 0.5
+      - - 20
+        - 18

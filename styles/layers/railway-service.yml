@@ -1,0 +1,25 @@
+id: railway-service
+type: line
+metadata:
+  mapbox:group: '1444849345966.4436'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - $type
+    - LineString
+  - - '=='
+    - class
+    - rail
+  - - has
+    - service
+paint:
+  line-color: hsla(0, 0%, 73%, 0.77)
+  line-width:
+    base: 1.4
+    stops:
+      - - 14
+        - 0.4
+      - - 20
+        - 1

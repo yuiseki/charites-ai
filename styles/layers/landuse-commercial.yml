@@ -1,0 +1,18 @@
+id: landuse-commercial
+type: fill
+metadata:
+  mapbox:group: '1444849388993.3071'
+source: openmaptiles
+source-layer: landuse
+filter:
+  - all
+  - - '=='
+    - $type
+    - Polygon
+  - - '=='
+    - class
+    - commercial
+layout:
+  visibility: visible
+paint:
+  fill-color: hsla(0, 60%, 87%, 0.23)

@@ -1,0 +1,33 @@
+id: place-city
+type: symbol
+metadata:
+  mapbox:group: '1444849242106.713'
+source: openmaptiles
+source-layer: place
+filter:
+  - all
+  - - '!='
+    - capital
+    - 2
+  - - '=='
+    - class
+    - city
+layout:
+  text-field: |-
+    {name:latin}
+    {name:nonlatin}
+  text-font:
+    - Open Sans Regular
+  text-max-width: 8
+  text-size:
+    base: 1.2
+    stops:
+      - - 7
+        - 14
+      - - 11
+        - 24
+  visibility: visible
+paint:
+  text-color: '#333'
+  text-halo-color: rgba(255,255,255,0.8)
+  text-halo-width: 1.2
