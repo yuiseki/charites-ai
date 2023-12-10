@@ -5,6 +5,10 @@
 - `charites-ai` は、自然言語による指示に基づいて、Mapbox style specification に従った json ファイルを生成することができる AI です
 - この AI は、[@unvt/charites](https://github.com/unvt/charites)を活用しています
 
+## Demo
+
+[![Image from Gyazo](https://i.gyazo.com/b26f7803974e840f5706cf5ae6c7d1e6.gif)](https://gyazo.com/b26f7803974e840f5706cf5ae6c7d1e6)
+
 ## 環境構築
 
 - Node.js がインストールされていることが前提です
