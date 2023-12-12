@@ -16,7 +16,7 @@
 - 以下のコマンドを実行してください
 
 ```bash
-export OPEN_AI_API_KEY=*****
+export OPENAI_API_KEY=*****
 git clone ...
 cd charites-ai
 npm ci
