@@ -1,3 +1,20 @@
+# !charites-ai
+# File name of this style:
+# - water-intermittent.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the intermittent water as light blue color.
+#
+# Description of this style:
+# - This style is used to render the intermittent water.
+# - The intermittent water is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is water.
+# - The fill is rendered when the intermittent is 1. Because the intermittent is 1, the water is a intermittent water.
+# - The fill is rendered with a color of #d8e8f8. (A light blue color)
+# - The fill is rendered with an opacity of 0.7.
+#
+
 id: water-intermittent
 type: fill
 metadata:

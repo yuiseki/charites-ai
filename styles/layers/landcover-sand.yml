@@ -1,3 +1,20 @@
+# !charites-ai
+# File name of this style:
+# - landcover-sand.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the sand as light yellow color.
+#
+# Description of this style:
+# - This style is used to render the sand.
+# - The sand is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landcover.
+# - The fill is rendered when the class is sand. Because the class is sand, the landcover is a sand.
+# - The fill is rendered with a color of #f5eec0. (A light yellow color)
+# - The fill is rendered with an opacity of 1.
+#
+
 id: landcover-sand
 type: fill
 metadata:

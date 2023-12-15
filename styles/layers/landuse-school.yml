@@ -1,3 +1,20 @@
+# !charites-ai
+# File name of this style:
+# - landuse-school.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the school as light purple color.
+#
+# Description of this style:
+# - This style is used to render the school.
+# - The school is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landuse.
+# - The fill is rendered when the class is school. Because the class is school, the landuse is a school.
+# - The fill is rendered with a color of #f0e8f8. (A light purple color)
+# - The fill is rendered with an opacity of 1.
+#
+
 id: landuse-school
 type: fill
 metadata:

@@ -1,3 +1,20 @@
+# !charites-ai
+# File name of this style:
+# - water.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the water as light blue color.
+#
+# Description of this style:
+# - This style is used to render the water.
+# - The water is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is water.
+# - The fill is rendered when the intermittent is not 1. Because the intermittent is not 1, the water is not an intermittent water.
+# - The fill is rendered when the brunnel is not tunnel. Because the brunnel is not tunnel, the water is not a tunnel.
+# - The fill is rendered with a color of hsl(210, 67%, 85%). (A light blue color)
+# - The intermittent water is specified at file styles/layers/waterway-river-intermittent.yml
+
 id: water
 type: fill
 metadata:

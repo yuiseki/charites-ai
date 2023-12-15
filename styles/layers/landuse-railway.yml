@@ -1,3 +1,20 @@
+# !charites-ai
+# File name of this style:
+# - landuse-railway.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the railway as light yellow color.
+#
+# Description of this style:
+# - This style is used to render the railway.
+# - The railway is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landuse.
+# - The fill is rendered when the class is railway. Because the class is railway, the landuse is a railway.
+# - The fill is rendered with a color of #f5eec0. (A light yellow color)
+# - The fill is rendered with an opacity of 0.4.
+#
+
 id: landuse-railway
 type: fill
 metadata:

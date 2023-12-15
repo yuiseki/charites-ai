@@ -47,7 +47,7 @@
       "url": "pmtiles://https://tile.openstreetmap.jp/static/planet.pmtiles"
     }
   },
-  "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
+  "sprite": "https://naogify.github.io/twemoji-sprites/icons",
   "glyphs": "https://tile.openstreetmap.jp/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
@@ -4871,62 +4871,6 @@
       }
     },
     {
-      "id": "poi-railway",
-      "type": "symbol",
-      "source": "openmaptiles",
-      "source-layer": "poi",
-      "minzoom": 13,
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Point"
-        ],
-        [
-          "has",
-          "name"
-        ],
-        [
-          "==",
-          "class",
-          "railway"
-        ],
-        [
-          "==",
-          "subclass",
-          "station"
-        ]
-      ],
-      "layout": {
-        "icon-allow-overlap": false,
-        "icon-ignore-placement": false,
-        "icon-image": "{class}_11",
-        "icon-optional": false,
-        "text-allow-overlap": false,
-        "text-anchor": "top",
-        "text-field": "{name:latin}\n{name:nonlatin}",
-        "text-font": [
-          "Open Sans Regular"
-        ],
-        "text-ignore-placement": false,
-        "text-max-width": 9,
-        "text-offset": [
-          0,
-          0.6
-        ],
-        "text-optional": true,
-        "text-padding": 2,
-        "text-size": 12
-      },
-      "paint": {
-        "text-color": "#666",
-        "text-halo-blur": 0.5,
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 1
-      }
-    },
-    {
       "id": "highway-name-path",
       "type": "symbol",
       "source": "openmaptiles",
@@ -5768,6 +5712,141 @@
         "text-halo-blur": 1,
         "text-halo-color": "rgba(255,255,255,0.8)",
         "text-halo-width": 2
+      }
+    },
+    {
+      "id": "poi-railway",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 12,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "has",
+          "name"
+        ],
+        [
+          "==",
+          "class",
+          "railway"
+        ],
+        [
+          "==",
+          "subclass",
+          "station"
+        ]
+      ],
+      "layout": {
+        "icon-image": "station",
+        "icon-optional": false,
+        "icon-allow-overlap": true,
+        "icon-ignore-placement": true,
+        "icon-anchor": "bottom",
+        "icon-size": {
+          "stops": [
+            [
+              12,
+              0.5
+            ],
+            [
+              24,
+              1.5
+            ]
+          ]
+        },
+        "text-optional": true,
+        "text-allow-overlap": true,
+        "text-ignore-placement": false,
+        "text-padding": 2,
+        "text-size": 12,
+        "text-max-width": 9,
+        "text-anchor": "top",
+        "text-font": [
+          "Open Sans Regular"
+        ],
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-offset": [
+          0,
+          0.6
+        ]
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "poi-hospital",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 14,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "has",
+          "name"
+        ],
+        [
+          "==",
+          "class",
+          "hospital"
+        ]
+      ],
+      "layout": {
+        "icon-image": "hospital",
+        "icon-optional": false,
+        "icon-allow-overlap": true,
+        "icon-ignore-placement": true,
+        "icon-anchor": "bottom",
+        "icon-size": {
+          "stops": [
+            [
+              14,
+              1
+            ],
+            [
+              24,
+              2
+            ]
+          ]
+        },
+        "text-optional": true,
+        "text-allow-overlap": true,
+        "text-ignore-placement": false,
+        "text-padding": 2,
+        "text-size": 12,
+        "text-max-width": 9,
+        "text-anchor": "top",
+        "text-font": [
+          "Open Sans Regular"
+        ],
+        "text-field": "{name}",
+        "text-offset": [
+          0,
+          0.6
+        ]
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
       }
     }
   ]

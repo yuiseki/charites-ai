@@ -1,3 +1,21 @@
+# !charites-ai
+# File name of this style:
+# - landuse-hospital.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the hospital as light pink color.
+#
+# Description of this style:
+# - This style is used to render the hospital.
+# - The hospital is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landuse.
+# - The fill is rendered when the class is hospital. Because the class is hospital, the landuse is a hospital.
+# - The fill is rendered with a color of #fde. (A light pink color)
+# - The fill is rendered with an opacity of 1.
+#
+
+
 id: landuse-hospital
 type: fill
 metadata:

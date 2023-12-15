@@ -1,3 +1,21 @@
+# !charites-ai
+# File name of this style:
+# - landuse-commercial.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the commercial area as light yellow color.
+#
+# Description of this style:
+# - This style is used to render the commercial area.
+# - The commercial area is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landuse.
+# - The fill is rendered when the class is commercial. Because the class is commercial, the landuse is a commercial.
+# - The fill is rendered with a color of #f5eec0. (A light yellow color)
+# - The fill is rendered with an opacity of 0.23.
+# - The fill is rendered with an opacity of 0.23 at zoom level 10 and above.
+#
+
 id: landuse-commercial
 type: fill
 metadata:

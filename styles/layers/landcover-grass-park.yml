@@ -1,3 +1,20 @@
+# !charites-ai
+# File name of this style:
+# - landcover-grass-park.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the park as light green color.
+#
+# Description of this style:
+# - This style is used to render the park.
+# - The park is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is park.
+# - The fill is rendered when the class is public_park. Because the class is public_park, the park is a public park.
+# - The fill is rendered with a color of #d8e8c8. (A light green color)
+# - The fill is rendered with an opacity of 0.8.
+#
+
 id: landcover-grass-park
 type: fill
 metadata:

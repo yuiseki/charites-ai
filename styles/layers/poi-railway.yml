@@ -1,8 +1,52 @@
+# !charites-ai
+# File name of this style:
+# - poi-railway.yml
+#
+# Concise instructions of this style in a few lines:
+# - Show the railway station as a station icon.
+# - Show the name of the railway station.
+#
+# Description of this style:
+# - This style is used to render the railway station.
+# - The railway station is rendered with a symbol.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is poi.
+# - The symbol is rendered when the class is railway and the subclass is station. Because the class is railway and the subclass is station, the railway station is a railway station.
+# - The symbol is rendered with an icon-image of station. (A station icon)
+# - The symbol is rendered with an icon-size of 0.5 at zoom level 12 and 1.5 at zoom level 24.
+# - The symbol is rendered with a text-field of {name:latin} {name:nonlatin}. (The name of the railway station)
+# - The symbol is rendered with a text-size of 12.
+# - The symbol is rendered with a text-max-width of 9.
+# - The symbol is rendered with a text-anchor of top.
+# - The symbol is rendered with a text-font of Open Sans Regular.
+# - The symbol is rendered with a text-offset of 0 and 0.6.
+# - The symbol is rendered with a text-color of #666. (A dark gray color)
+# - The symbol is rendered with a text-halo-blur of 0.5.
+# - The symbol is rendered with a text-halo-color of #ffffff. (A white color)
+# - The symbol is rendered with a text-halo-width of 1.
+# - The symbol is rendered with a text-padding of 2.
+# - The symbol is rendered with a text-optional of true.
+# - The symbol is rendered with a text-allow-overlap of true.
+# - The symbol is rendered with a text-ignore-placement of false.
+# - The symbol is rendered with an icon-optional of false.
+# - The symbol is rendered with an icon-allow-overlap of true.
+# - The symbol is rendered with an icon-ignore-placement of true.
+# - The symbol is rendered with an icon-anchor of bottom.
+# - The symbol is rendered with an icon-size of 0.5 at zoom level 12 and 1.5 at zoom level 24.
+# - The symbol is rendered with an icon-image of station. (A station icon)
+# - The symbol is rendered with an icon-optional of false.
+# - The symbol is rendered with an icon-allow-overlap of true.
+# - The symbol is rendered with an icon-ignore-placement of true.
+# - The symbol is rendered with an icon-anchor of bottom.
+# - The symbol is rendered with an icon-size of 0.5 at zoom level 12 and 1.5 at zoom level 24.
+#
+
 id: poi-railway
 type: symbol
 source: openmaptiles
 source-layer: poi
-minzoom: 13
+minzoom: 12
+maxzoom: 24
 filter:
   - all
   - - '=='
@@ -17,25 +61,32 @@ filter:
     - subclass
     - station
 layout:
-  icon-allow-overlap: false
-  icon-ignore-placement: false
-  icon-image: '{class}_11'
+  icon-image: 'station'
   icon-optional: false
-  text-allow-overlap: false
+  icon-allow-overlap: true
+  icon-ignore-placement: true
+  icon-anchor: bottom
+  icon-size:
+    stops:
+      - - 12
+        - 0.5
+      - - 24
+        - 1.5
+  text-optional: true
+  text-allow-overlap: true
+  text-ignore-placement: false
+  text-padding: 2
+  text-size: 12
+  text-max-width: 9
   text-anchor: top
+  text-font:
+    - Open Sans Regular
   text-field: |-
     {name:latin}
     {name:nonlatin}
-  text-font:
-    - Open Sans Regular
-  text-ignore-placement: false
-  text-max-width: 9
   text-offset:
     - 0
     - 0.6
-  text-optional: true
-  text-padding: 2
-  text-size: 12
 paint:
   text-color: '#666'
   text-halo-blur: 0.5

@@ -1,3 +1,21 @@
+# !charites-ai
+# File name of this style:
+# - landcover-ice-shelf.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the ice shelf as white color.
+#
+# Description of this style:
+# - This style is used to render the ice shelf.
+# - The ice shelf is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landcover.
+# - The fill is rendered when the subclass is ice_shelf. Because the subclass is ice_shelf, the landcover is a ice shelf.
+# - The fill is rendered with a color of #fff. (A white color)
+# - The fill is rendered with an opacity of 0.9 at zoom level 0.
+# - The fill is rendered with an opacity of 0.3 at zoom level 10 and above.
+#
+
 id: landcover-ice-shelf
 type: fill
 metadata:

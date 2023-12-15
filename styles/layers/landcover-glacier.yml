@@ -1,3 +1,21 @@
+# !charites-ai
+# File name of this style:
+# - landcover-glacier.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the glacier as white color.
+#
+# Description of this style:
+# - This style is used to render the glacier.
+# - The glacier is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landcover.
+# - The fill is rendered when the subclass is glacier. Because the subclass is glacier, the landcover is a glacier.
+# - The fill is rendered with a color of #fff. (A white color)
+# - The fill is rendered with an opacity of 0.9 at zoom level 0.
+# - The fill is rendered with an opacity of 0.3 at zoom level 10 and above.
+#
+
 id: landcover-glacier
 type: fill
 metadata:

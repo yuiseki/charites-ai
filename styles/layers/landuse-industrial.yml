@@ -1,3 +1,20 @@
+# !charites-ai
+# File name of this style:
+# - landuse-industrial.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the industrial area as light green color.
+#
+# Description of this style:
+# - This style is used to render the industrial area.
+# - The industrial area is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landuse.
+# - The fill is rendered when the class is industrial. Because the class is industrial, the landuse is a industrial area.
+# - The fill is rendered with a color of #d8e8c8. (A light green color)
+# - The fill is rendered with an opacity of 0.34.
+#
+
 id: landuse-industrial
 type: fill
 source: openmaptiles

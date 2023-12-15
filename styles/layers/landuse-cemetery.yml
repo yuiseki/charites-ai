@@ -1,3 +1,21 @@
+# !charites-ai
+# File name of this style:
+# - landcover-wood.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the wood as dark green color.
+#
+# Description of this style:
+# - This style is used to render the wood.
+# - The wood is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landcover.
+# - The fill is rendered when the class is wood. Because the class is wood, the landcover is a wood.
+# - The fill is rendered with a color of #6a4. (A dark green color)
+# - The fill is rendered with an opacity of 0.1 at zoom level 0.
+# - The fill is rendered with an opacity of 0.3 at zoom level 10 and above.
+#
+
 id: landuse-cemetery
 type: fill
 metadata:

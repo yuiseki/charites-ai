@@ -1,0 +1,62 @@
+# !charites-ai
+# File name of this style:
+# - poi-hospital.yml
+#
+# Concise instructions of this style in a few lines:
+# - Show the hospital as a hospital icon.
+# - Show the name of the hospital.
+#
+# Description of this style:
+# - This style is used to render the hospital.
+# - The hospital is rendered with a symbol.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is poi.
+# - 
+#
+
+id: poi-hospital
+type: symbol
+source: openmaptiles
+source-layer: poi
+minzoom: 14
+maxzoom: 24
+filter:
+  - all
+  - - '=='
+    - $type
+    - Point
+  - - has
+    - name
+  - - '=='
+    - class
+    - hospital
+layout:
+  icon-image: 'hospital'
+  icon-optional: false
+  icon-allow-overlap: true
+  icon-ignore-placement: true
+  icon-anchor: bottom
+  icon-size:
+    stops:
+      - - 14
+        - 1
+      - - 24
+        - 2
+  text-optional: true
+  text-allow-overlap: true
+  text-ignore-placement: false
+  text-padding: 2
+  text-size: 12
+  text-max-width: 9
+  text-anchor: top
+  text-font:
+    - Open Sans Regular
+  text-field: '{name}'
+  text-offset:
+    - 0
+    - 0.6
+paint:
+  text-color: '#666'
+  text-halo-blur: 0.5
+  text-halo-color: '#ffffff'
+  text-halo-width: 1

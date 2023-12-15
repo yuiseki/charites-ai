@@ -35,7 +35,7 @@ sources:
   openmaptiles:
     type: vector
     url: pmtiles://https://tile.openstreetmap.jp/static/planet.pmtiles
-sprite: https://openmaptiles.github.io/osm-bright-gl-style/sprite
+sprite: https://naogify.github.io/twemoji-sprites/icons
 glyphs: https://tile.openstreetmap.jp/fonts/{fontstack}/{range}.pbf
 layers:
   - !!inc/file layers/background.yml
@@ -142,7 +142,6 @@ layers:
   - !!inc/file layers/poi-level-3.yml
   - !!inc/file layers/poi-level-2.yml
   - !!inc/file layers/poi-level-1.yml
-  - !!inc/file layers/poi-railway.yml
   - !!inc/file layers/highway-name-path.yml
   - !!inc/file layers/highway-name-minor.yml
   - !!inc/file layers/highway-name-major.yml
@@ -161,3 +160,5 @@ layers:
   - !!inc/file layers/place-country-2.yml
   - !!inc/file layers/place-country-1.yml
   - !!inc/file layers/place-continent.yml
+  - !!inc/file layers/poi-railway.yml
+  - !!inc/file layers/poi-hospital.yml

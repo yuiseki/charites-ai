@@ -1,3 +1,20 @@
+# !charites-ai
+# File name of this style:
+# - landcover-grass.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the grass as light green color.
+#
+# Description of this style:
+# - This style is used to render the grass.
+# - The grass is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landcover.
+# - The fill is rendered when the class is grass. Because the class is grass, the landcover is a grass.
+# - The fill is rendered with a color of #d8e8c8. (A light green color)
+# - The fill is rendered with an opacity of 1.
+#
+
 id: landcover-grass
 type: fill
 metadata:

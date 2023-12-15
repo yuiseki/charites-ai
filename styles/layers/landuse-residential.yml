@@ -1,3 +1,21 @@
+# !charites-ai
+# File name of this style:
+# - landuse-residential.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the residential area as light yellow color.
+#
+# Description of this style:
+# - This style is used to render the residential area.
+# - The residential area is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landuse.
+# - The fill is rendered when the class is residential. Because the class is residential, the landuse is a residential area.
+# - The fill is rendered with a color of hsla(30, 19%, 90%, 0.4). (A light gray color) at zoom level 12 and above.
+# - The fill is rendered with a color of hsla(30, 19%, 90%, 0.2). (A light gray color) at zoom level 16 and above.
+# - The fill is rendered with an opacity of 1.
+#
+
 id: landuse-residential
 type: fill
 metadata:

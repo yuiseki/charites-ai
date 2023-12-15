@@ -1,3 +1,25 @@
+# !charites-ai
+# File name of this style:
+# - waterway-river-intermittent.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the intermittent river as dashed light blue lines.
+#
+# Description of this style:
+# - This style is used to render the intermittent river.
+# - The intermittent river is rendered with a line.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is waterway.
+# - The line is rendered when the class is river. Because the class is river, the waterway is a river.
+# - The line is rendered when the brunnel is not tunnel. Because the brunnel is not tunnel, the waterway is not a tunnel.
+# - The line is rendered when the intermittent is 1. Because the intermittent is 1, the waterway is an intermittent waterway.
+# - The line is rendered with a round line cap.
+# - The line is rendered with a color of #a0c8f0. (A light blue color)
+# - The line is rendered with a dash pattern of 3 pixels and 2.5 pixels.
+# - The line is rendered with a width of 0.8 pixels at zoom level 0 to 10.
+# - The line is rendered with a width of 6 pixels at zoom level 10 to 20.
+#
+
 id: waterway-river-intermittent
 type: line
 metadata:

@@ -1,3 +1,22 @@
+# !charites-ai
+# File name of this style:
+# - highway-area.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the highway area as light gray color.
+#
+# Description of this style:
+# - This style is used to render the highway area.
+# - The highway area is rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is transportation.
+# - The fill is rendered when the $type is Polygon. Because the $type is Polygon, the highway area is a polygon.
+# - The fill is rendered when the class is not pier. Because the class is not pier, the highway area is not a pier.
+# - The fill is rendered with a color of hsla(0, 0%, 89%, 0.56). (A light gray color)
+# - The fill is rendered with an opacity of 0.9.
+# - The fill is rendered with an outline color of #cfcdca.
+#
+
 id: highway-area
 type: fill
 metadata:
