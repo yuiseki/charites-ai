@@ -1,0 +1,33 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - railway-lines.yml
+#
+# Concise instructions of this style in a few words:
+# - Display railway lines on the map in a dark blue color.
+#
+# Description of this style:
+# - This style is used to render railway lines on the map.
+# - The railway lines are rendered with a line.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is transportation.
+# - The line is rendered when the class is rail. Because the class is rail, the feature is a railway line.
+# - The line is rendered with a color of #00008b. (A dark blue color)
+# - The line is rendered with a width of 1.5 pixels.
+#
+
+id: railway-lines
+type: line
+metadata:
+  mapbox:group: '1444849345966.4436'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - '=='
+  - class
+  - rail
+paint:
+  line-color: '#00008b'
+  line-width: 1.5

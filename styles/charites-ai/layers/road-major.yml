@@ -1,0 +1,52 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - road-major.yml
+#
+# Concise instructions of this style in a few words:
+# - Show major roads on the map in a medium gray color.
+#
+# Description of this style:
+# - This style is used to render major roads on the map.
+# - The major roads are rendered with a line.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is transportation.
+# - The line is rendered when the class is motorway, trunk, or primary. Because the class is motorway, trunk, or primary, the feature is a major road.
+# - The line is rendered with a color of #888. (A medium gray color)
+# - The line is rendered with a width of 0.6 when the zoom level is 10 or less.
+# - The line is rendered with a width of 1 when the zoom level is 11.
+# - The line is rendered with a width of 1.5 when the zoom level is 12.
+# - The line is rendered with a width of 2 when the zoom level is 13 or more.
+#
+
+id: road-major
+type: line
+metadata:
+  mapbox:group: '1444849345966.4436'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - $type
+    - LineString
+  - - in
+    - class
+    - motorway
+    - trunk
+    - primary
+paint:
+  line-color: '#888'
+  line-width:
+    base: 1.2
+    stops:
+      - - 10
+        - 0.6
+      - - 11
+        - 1
+      - - 12
+        - 1.5
+      - - 13
+        - 2
