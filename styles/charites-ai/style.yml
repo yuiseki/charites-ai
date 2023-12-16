@@ -9,5 +9,5 @@ sprite: https://openmaptiles.github.io/osm-bright-gl-style/sprite
 glyphs: https://tile.openstreetmap.jp/fonts/{fontstack}/{range}.pbf
 layers:
   - !!inc/file layers/background.yml
-  - !!inc/file /layers/water.yml
-  - !!inc/file /layers/place-country-1.yml
+  - !!inc/file layers/water.yml
+  - !!inc/file layers/place-country-1.yml

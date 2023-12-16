@@ -260,7 +260,7 @@ const invokeCharitesAiChain = async (input: string): Promise<void> => {
     console.info("");
     await fs.writeFile(styleFilePath, convertedResult + "\n");
     const styleFileRelativePath = styleFilePath.replace(
-      "styles/charites-ai",
+      "styles/charites-ai/",
       ""
     );
     // styles/charites-ai/style.yml を編集する
