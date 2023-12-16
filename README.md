@@ -13,6 +13,7 @@
 
 - Node.js がインストールされていることが前提です
 - npm がインストールされていることも前提です
+- Makefile を実行することができることも前提です
 - 以下のコマンドを実行してください
 
 ```bash
@@ -20,31 +21,29 @@ export OPENAI_API_KEY=*****
 git clone ...
 cd charites-ai
 npm ci
-npm run build
-cd docs
-npx http-server
+npm run dev
 ```
 
-- ブラウザで `http://localhost:8080` にアクセスしてください
+- ブラウザで `http://localhost:5173/` にアクセスしてください
 - 地図が表示されていることを確認してください
 
 ## charites-ai の使い方
 
-- `npx http-server` は実行したままの状態で、以下のようなコマンドを実行してください
+- `npm run dev` は実行したままの状態で、以下のようなコマンドを実行してください
 
 ```bash
-npm run embed -- 国の背景を青色で表示してください && npm run build
+make style input=国の背景を青色で表示してください
 ```
 
-- ブラウザで `http://localhost:8080` にアクセスしてください
+- ブラウザで `http://localhost:5173/` にアクセスしてください
 - 国が青色で地図が表示されていることを確認してください
 - 以下のようなコマンドを実行してください
 
 ```bash
-npm run embed -- 国の背景を黄色で表示してください && npm run build
+make style input=国の背景を黄色で表示してください
 ```
 
-- ブラウザで `http://localhost:8080` にアクセスしてください
+- ブラウザで `http://localhost:5173/` にアクセスしてください
 - 国が黄色で地図が表示されていることを確認してください
 
 ## charites-ai の仕組み

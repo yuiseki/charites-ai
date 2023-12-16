@@ -1,0 +1,12 @@
+version: 8
+name: Charites AI Style
+metadata: {}
+sources:
+  openmaptiles:
+    type: vector
+    url: pmtiles://https://tile.openstreetmap.jp/static/planet.pmtiles
+sprite: https://openmaptiles.github.io/osm-bright-gl-style/sprite
+glyphs: https://tile.openstreetmap.jp/fonts/{fontstack}/{range}.pbf
+layers:
+  - !!inc/file layers/background.yml
+  - !!inc/file layers/watar.yml

@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import maplibregl from "maplibre-gl";
+import Map from "react-map-gl/maplibre";
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { Protocol } from "pmtiles";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // 地図スタイルを保持するstate
+  const [mapStyle, setMapStyle] = useState();
+
+  // 1秒ごとにstyle.jsonが変化していないか確認してmapStyleを更新する
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch("./style.json")
+        .then((response) => response.json())
+        .then((json) => {
+          if (JSON.stringify(mapStyle) !== JSON.stringify(json)) {
+            setMapStyle(json);
+          }
+        });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [mapStyle]);
+
+  // pmtilesプロトコルを追加する
+  useEffect(() => {
+    const protocol = new Protocol();
+    maplibregl.addProtocol("pmtiles", protocol.tile);
+    return () => {
+      maplibregl.removeProtocol("pmtiles");
+    };
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
+      <Map
+        initialViewState={{
+          longitude: 131,
+          latitude: 46,
+          zoom: 3,
+        }}
+        style={{ position: "absolute", width: "100%", height: "100%" }}
+        hash={true}
+        mapStyle={mapStyle}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
