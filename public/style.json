@@ -15,7 +15,7 @@
       "id": "background",
       "type": "background",
       "paint": {
-        "background-color": "#FFFF00"
+        "background-color": "#D3D3D3"
       }
     },
     {
@@ -41,6 +41,59 @@
       },
       "paint": {
         "fill-color": "hsl(210, 67%, 85%)"
+      }
+    },
+    {
+      "id": "place-country-1",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "1444849242106.713"
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "country"
+        ],
+        [
+          "==",
+          "rank",
+          1
+        ],
+        [
+          "has",
+          "iso_a2"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:latin}",
+        "text-font": [
+          "Open Sans Bold"
+        ],
+        "text-max-width": 6.25,
+        "text-size": {
+          "stops": [
+            [
+              1,
+              11
+            ],
+            [
+              4,
+              17
+            ]
+          ]
+        },
+        "text-transform": "uppercase",
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "#334",
+        "text-halo-blur": 1,
+        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-halo-width": 2
       }
     }
   ]

@@ -56,7 +56,9 @@ const loadStyleInformations = async (
     // firstLineが # !charites-ai で始まる場合だけ処理する
     if (!firstLine.startsWith("# !charites-ai")) continue;
 
-    const lines = styleYaml.split("\n");
+    // { を {{ に置換する
+    // } を }} に置換する
+    const lines = styleYaml.replace(/{/g, "{{").replace(/}/g, "}}").split("\n");
 
     // # Directory path of this style: と書かれた行の位置を取得する
     const styleDirNameLineIndex = lines.findIndex((line) =>
@@ -225,6 +227,9 @@ const invokeCharitesAiChain = async (input: string): Promise<void> => {
     console.error(`Error: ${result} includes Japanese.`);
     process.exit(1);
   }
+  // {{ を { に置換する
+  // }} を } に置換する
+  const convertedResult = result.replace(/{{/g, "{").replace(/}}/g, "}");
   const resultLines = result.split("\n");
   // resultからFile name of this styleを取得する
   // File name of this style: と書かれた行の位置を取得する
@@ -235,6 +240,7 @@ const invokeCharitesAiChain = async (input: string): Promise<void> => {
   const styleFileNameLine = resultLines[styleFileNameLineIndex + 1];
   // ファイル名を取得する
   const styleFileName = styleFileNameLine.split("# - ")[1];
+  console.debug("result is correct YAML.");
   const outputDir = "styles/charites-ai/layers";
   // outputDir/styleFileName が存在するか確認する
   const styleFilePath = `${outputDir}/${styleFileName}`;
@@ -244,13 +250,52 @@ const invokeCharitesAiChain = async (input: string): Promise<void> => {
     .catch(() => false);
   if (styleFileExists) {
     // 存在する場合はファイルを書き換える
-    console.debug("result is correct YAML.");
-    console.info(`Update: ${styleFilePath}`);
-    await fs.writeFile(styleFilePath, result + "\n");
+    console.info("Update existing style YAML file", styleFilePath);
+    await fs.writeFile(styleFilePath, convertedResult + "\n");
   } else {
-    // 存在しない場合はエラーで終了する
-    console.error(`Error: ${styleFilePath} is not found.`);
-    process.exit(1);
+    // 存在しない場合はファイルに書き出したあとで
+    // styles/charites-ai/style.yml を編集しなければならない
+    console.info("Create new style YAML file", styleFilePath);
+    await fs.writeFile(styleFilePath, convertedResult + "\n");
+    const styleFileRelativePath = styleFilePath.replace(
+      "styles/charites-ai",
+      ""
+    );
+    // styles/charites-ai/style.yml を編集する
+    const stylesYamlDefineFilePath = "styles/charites-ai/style.yml";
+    const stylesYamlDefine = await fs.readFile(
+      stylesYamlDefineFilePath,
+      "utf-8"
+    );
+    const styleYamlDefineLines = stylesYamlDefine.split("\n");
+    // `  - !!inc/file existingStyleYamlFilePath` と書かれた行が多数あり、その最後の次の行に、
+    // `  - !!inc/file styleFileRelativePath`
+    // のように追加する
+    // そのため、`  - !!inc/file` で始まる最後の行の行数を取得する
+    const lastIncFileLineIndex = styleYamlDefineLines
+      .map((line, idx) => (line.startsWith("  - !!inc/file") ? idx : -1))
+      .filter((idx) => idx !== -1)
+      .pop();
+    // lastIncFileLineIndexがundefinedだったらファイルの末尾に追加する
+    if (lastIncFileLineIndex === undefined) {
+      styleYamlDefineLines.push(`  - !!inc/file ${styleFileRelativePath}`);
+    } else {
+      // 最後の行の次の行に、`  - !!inc/file styleFileRelativePath` を追加する
+      styleYamlDefineLines.splice(
+        lastIncFileLineIndex + 1,
+        0,
+        `  - !!inc/file ${styleFileRelativePath}`
+      );
+    }
+    console.debug(styleYamlDefineLines.join("\n"));
+    console.info(
+      "Update existing styles YAML define file",
+      stylesYamlDefineFilePath
+    );
+    await fs.writeFile(
+      stylesYamlDefineFilePath,
+      styleYamlDefineLines.join("\n")
+    );
   }
   console.info("charites-ai chain finished.");
 };
