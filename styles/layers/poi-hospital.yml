@@ -11,7 +11,25 @@
 # - The hospital is rendered with a symbol.
 # - The Source of the data is openmaptiles.
 # - The Source Layer of the data is poi.
-# - 
+# - The hospital is rendered with a hospital icon.
+# - The hospital icon is rendered with a size of 1 at zoom level 14.
+# - The hospital icon is rendered with a size of 2 at zoom level 24.
+# - The hospital icon is rendered with a text.
+# - The text is rendered with a size of 12.
+# - The text is rendered with a maximum width of 9.
+# - The text is rendered with a font of Open Sans Regular.
+# - The text is rendered with a color of #666.
+# - The text is rendered with a halo blur of 0.5.
+# - The text is rendered with a halo color of #ffffff.
+# - The text is rendered with a halo width of 1.
+# - The text is rendered with an offset of 0 and 0.6.
+# - The text is rendered with an anchor of top.
+# - The text is rendered with a padding of 2.
+# - The text is rendered with a field of {name}.
+# - The text is rendered with an optional of true.
+# - The text is rendered with an allow overlap of true.
+# - The text is rendered with an ignore placement of false.
+# - The hospital is rendered with a text.
 #
 
 id: poi-hospital
