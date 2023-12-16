@@ -28,6 +28,7 @@
 # - The text label is rendered with a text halo width of 2.
 #
 
+
 id: place-country-1
 type: symbol
 metadata:

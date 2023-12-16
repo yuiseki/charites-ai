@@ -7,6 +7,8 @@
 #
 # Concise instructions of this style in a few words:
 # - Show the water as light blue color.
+# - Show the sea as light blue color.
+# - Show the sea in the map.
 #
 # Description of this style:
 # - This style is used to render the water.

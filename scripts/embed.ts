@@ -241,6 +241,7 @@ const invokeCharitesAiChain = async (input: string): Promise<void> => {
   // ファイル名を取得する
   const styleFileName = styleFileNameLine.split("# - ")[1];
   console.debug("result is correct YAML.");
+  console.debug("");
   const outputDir = "styles/charites-ai/layers";
   // outputDir/styleFileName が存在するか確認する
   const styleFilePath = `${outputDir}/${styleFileName}`;
@@ -256,6 +257,7 @@ const invokeCharitesAiChain = async (input: string): Promise<void> => {
     // 存在しない場合はファイルに書き出したあとで
     // styles/charites-ai/style.yml を編集しなければならない
     console.info("Create new style YAML file", styleFilePath);
+    console.info("");
     await fs.writeFile(styleFilePath, convertedResult + "\n");
     const styleFileRelativePath = styleFilePath.replace(
       "styles/charites-ai",
