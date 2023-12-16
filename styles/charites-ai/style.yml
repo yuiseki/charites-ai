@@ -22,4 +22,3 @@ layers:
   - !!inc/file layers/place-settlement.yml
   - !!inc/file layers/place-labels-land-level-4.yml
   - !!inc/file layers/place-country-2.yml
-  - !!inc/file layers/minor-roads.yml

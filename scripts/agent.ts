@@ -22,7 +22,7 @@ const baseInstructions = `
 // ステップバイステップで地図スタイルを作り上げる計画を立てるように指示を出す
 // 人間が見れる一般的な地図のスタイルを作ることを目標とする
 // 上限を決める
-const limitOfInstructions = 15;
+const limitOfInstructions = 14;
 const charitesAiAgentPromptTemplate = PromptTemplate.fromTemplate(
   `You are a expert of OpenStreetMap and map scheme of openmaptiles.
 Your goal is to create a map style, which is simple but meaningful and helpful for humanity.

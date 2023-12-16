@@ -13,7 +13,7 @@
 # - The names are rendered as text labels.
 # - The Source of the data is openmaptiles.
 # - The Source Layer of the data is place.
-# - The text labels are rendered when the class is city, town, or village. Because the class is city, town, or village, the names are settlement names.
+# - The text labels are rendered when the class is city, town, or village. Because the class is city, town, or village, the names are city, town, or village names.
 # - The text labels are rendered with a text field of {name:latin} {name:nonlatin}.
 # - The text labels are rendered with a text font of Open Sans Regular.
 # - The text labels are rendered with a text max width of 8.

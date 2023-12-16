@@ -15,10 +15,9 @@
 # - The Source Layer of the data is transportation.
 # - The line is rendered when the class is motorway, trunk, or primary. Because the class is motorway, trunk, or primary, the feature is a major road.
 # - The line is rendered with a color of #888. (A medium gray color)
-# - The line is rendered with a width of 0.6 when the zoom level is 10 or less.
-# - The line is rendered with a width of 1 when the zoom level is 11.
-# - The line is rendered with a width of 1.5 when the zoom level is 12.
-# - The line is rendered with a width of 2 when the zoom level is 13 or more.
+# - The line is rendered with a width of 0.75 when the zoom level is 10 or less.
+# - The line is rendered with a width of 1.5 when the zoom level is 11.
+# - The line is rendered with a width of 2 when the zoom level is 20 or more.
 #
 
 id: road-major
@@ -32,7 +31,7 @@ filter:
   - - '=='
     - $type
     - LineString
-  - - in
+  - - 'in'
     - class
     - motorway
     - trunk
@@ -40,13 +39,11 @@ filter:
 paint:
   line-color: '#888'
   line-width:
-    base: 1.2
+    base: 1.4
     stops:
       - - 10
-        - 0.6
+        - 0.75
       - - 11
-        - 1
-      - - 12
         - 1.5
-      - - 13
+      - - 20
         - 2
