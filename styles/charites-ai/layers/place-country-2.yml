@@ -1,0 +1,56 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - place-country-2.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the names of countries in black.
+# - Display the names of countries in a black color.
+#
+# Description of this style:
+# - This style is used to render the names of countries on the map.
+# - The names are rendered as text labels.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is place.
+# - The text labels are rendered when the class is country. Because the class is country, the names are country names.
+# - The text labels are rendered with a text field of {name:latin}. (The name of the country in Latin characters)
+# - The text labels are rendered with a text font of Open Sans Regular.
+# - The text labels are rendered with a text max width of 6.25.
+# - The text labels are rendered with a text size of 11 pixels at zoom level 1.
+# - The text labels are rendered with a text size of 17 pixels at zoom level 4.
+# - The text labels are rendered with a text color of #000000. (Black color)
+# - The text labels are rendered with a text halo blur of 1.
+# - The text labels are rendered with a text halo color of rgba(255,255,255,0.8). (White color with 80% opacity)
+# - The text labels are rendered with a text halo width of 2.
+#
+
+id: place-country-2
+type: symbol
+metadata:
+  mapbox:group: '1444849242106.713'
+source: openmaptiles
+source-layer: place
+filter:
+  - all
+  - - '=='
+    - class
+    - country
+layout:
+  text-field: '{name:latin}'
+  text-font:
+    - Open Sans Regular
+  text-max-width: 6.25
+  text-size:
+    stops:
+      - - 1
+        - 11
+      - - 4
+        - 17
+  visibility: visible
+paint:
+  text-color: '#000000'
+  text-halo-blur: 1
+  text-halo-color: rgba(255,255,255,0.8)
+  text-halo-width: 2

@@ -1,0 +1,32 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - landuse-school.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the schools on the map in a light light purple color.
+#
+# Description of this style:
+# - This style is used to render the schools on the map.
+# - The schools are rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landuse.
+# - The fill is rendered when the class is school. Because the class is school, the landuse is a school.
+# - The fill is rendered with a color of #f0e8f8. (A light light purple color)
+# - The fill is rendered with an opacity of 1.
+#
+
+id: landuse-school
+type: fill
+metadata:
+  mapbox:group: '1444849388993.3071'
+source: openmaptiles
+source-layer: landuse
+filter:
+  - '=='
+  - class
+  - school
+paint:
+  fill-color: '#f0e8f8'

@@ -195,27 +195,10 @@ const loadCharitesAiChain = async ({
   return chain;
 };
 
-const invokeCharitesAiChain = async (input: string): Promise<void> => {
-  const styleYamlFilePaths = await loadStyleYamlFilePaths();
-  console.debug("total styleYamlFilePaths: ", styleYamlFilePaths.length);
-
-  const exampleStyleInformations = await loadStyleInformations(
-    styleYamlFilePaths
-  );
-  console.debug(
-    "target exampleStyleInformations: ",
-    exampleStyleInformations.length
-  );
-
-  console.debug("");
-  console.debug("loading charites-ai chain...");
-  console.debug("");
-
-  const llm = new OpenAIChat({ temperature: 0 });
-  const chain = await loadCharitesAiChain({ llm, exampleStyleInformations });
-  console.debug("charites-ai chain loaded.");
-  console.debug("");
-
+export const invokeCharitesAiChain = async (
+  chain: RunnableSequence<any, any>,
+  input: string
+): Promise<void> => {
   const result = await chain.invoke({
     input: input,
   });
@@ -302,19 +285,65 @@ const invokeCharitesAiChain = async (input: string): Promise<void> => {
   console.info("charites-ai chain finished.");
 };
 
-let lastArg: string | undefined = undefined;
-if (process.argv.length > 2) {
-  // 末尾の引数を取得する
-  lastArg = process.argv[process.argv.length - 1];
+export const initializeCharitesAiChain = async (): Promise<
+  RunnableSequence<any, any>
+> => {
+  const styleYamlFilePaths = await loadStyleYamlFilePaths();
+  console.debug("total styleYamlFilePaths: ", styleYamlFilePaths.length);
+
+  const exampleStyleInformations = await loadStyleInformations(
+    styleYamlFilePaths
+  );
+  console.debug(
+    "target exampleStyleInformations: ",
+    exampleStyleInformations.length
+  );
+
+  console.debug("");
+  console.debug("loading charites-ai chain...");
+  console.debug("");
+
+  const llm = new OpenAIChat({ temperature: 0 });
+  const chain = await loadCharitesAiChain({ llm, exampleStyleInformations });
+  console.debug("charites-ai chain loaded.");
+  console.debug("");
+  return chain;
+};
+
+// main
+// importされた時には実行しない
+// スクリプトとして実行された時にのみ実行する
+// ESM modulesである
+
+import * as url from "node:url";
+
+const main = async () => {
+  let lastArg: string | undefined = undefined;
+  if (process.argv.length > 2) {
+    // 末尾の引数を取得する
+    lastArg = process.argv[process.argv.length - 1];
+  }
+
+  // lastArgが無かったらエラーで終了する
+  if (!lastArg) {
+    console.error("Error: No input.");
+    process.exit(1);
+  }
+
+  console.debug("input: ", lastArg);
+  console.debug("");
+
+  const chain = await initializeCharitesAiChain();
+
+  await invokeCharitesAiChain(chain, lastArg);
+};
+
+if (import.meta.url.startsWith("file:")) {
+  // file: で始まる場合はローカルで実行されている
+  const modulePath = url.fileURLToPath(import.meta.url);
+  if (process.argv[1] === modulePath) {
+    // (B)
+    // Main ESM module
+    await main();
+  }
 }
-
-// lastArgが無かったらエラーで終了する
-if (!lastArg) {
-  console.error("Error: No input.");
-  process.exit(1);
-}
-
-console.debug("input: ", lastArg);
-console.debug("");
-
-await invokeCharitesAiChain(lastArg);

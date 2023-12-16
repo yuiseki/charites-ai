@@ -1,0 +1,56 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - highway.yml
+#
+# Concise instructions of this style in a few words:
+# - Display highways on the map in light yellow and opacity 50%.
+#
+# Description of this style:
+# - This style is used to render highways on the map.
+# - The highways are rendered with a line.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is transportation.
+# - The line is rendered when not brunnel, bridge, tunnel, or ramp. Because not brunnel, bridge, tunnel, or ramp, the feature is not a highway in a tunnel, on a bridge, or a ramp.
+# - The line is rendered when the class is primary or secondary. Because the class is primary or secondary, the feature is a highway.
+# - The line is rendered with a color of #fea. (A light yellow color)
+# - The line is rendered with an opacity of 0.5.
+# - The line is rendered with a width of 1.2 when the zoom level is 8.5 or less.
+# - The line is rendered with a width of 0.5 when the zoom level is 9.
+# - The line is rendered with a width of 18 when the zoom level is 20 or more.
+#
+
+id: highway
+type: line
+metadata:
+  mapbox:group: '1444849345966.4436'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - $type
+    - LineString
+  - - '!in'
+    - brunnel
+    - bridge
+    - tunnel
+    - ramp
+  - - in
+    - class
+    - primary
+    - secondary
+paint:
+  line-color: '#fea'
+  line-opacity: 0.5
+  line-width:
+    base: 1.2
+    stops:
+      - - 8.5
+        - 1.2
+      - - 9
+        - 0.5
+      - - 20
+        - 18

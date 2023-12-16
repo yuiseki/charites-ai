@@ -7,6 +7,7 @@
 #
 # Concise instructions of this style in a few words:
 # - Show the grass as light green color.
+# - Display green areas in the map.
 #
 # Description of this style:
 # - This style is used to render the grass.

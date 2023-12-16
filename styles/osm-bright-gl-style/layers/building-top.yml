@@ -1,3 +1,26 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - building-top.yml
+#
+# Concise instructions of this style in a few words:
+# - Display the top of buildings on the map in a light gray color.
+#
+# Description of this style:
+# - This style is used to render the top of buildings on the map.
+# - The top of buildings are rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is building.
+# - The fill is rendered with a color of #f2eae2. (A light gray color)
+# - The fill is rendered with an opacity of 0 when the zoom level is 13 or less.
+# - The fill is rendered with an opacity of 1 when the zoom level is 16 or more.
+# - The fill is rendered with a color of #dfdbd7. (A light gray color)
+# - The fill is rendered with a translation of -2 pixels when the zoom level is 14 or less.
+# - The fill is rendered with a translation of -2 pixels when the zoom level is 16 or more.
+#
+
 id: building-top
 type: fill
 metadata:

@@ -42,10 +42,9 @@ function App() {
         initialViewState={{
           longitude: 131,
           latitude: 46,
-          zoom: 3,
+          zoom: 6,
         }}
         style={{ position: "absolute", width: "100%", height: "100%" }}
-        hash={true}
         mapStyle={mapStyle}
       />
     </div>

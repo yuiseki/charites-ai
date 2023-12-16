@@ -6,15 +6,14 @@
 # - building.yml
 #
 # Concise instructions of this style in a few words:
-# - Show buildings on the map in a light brown color.
+# - Show the buildings on the map in a light gray color.
 #
 # Description of this style:
 # - This style is used to render buildings on the map.
 # - The buildings are rendered with a fill.
 # - The Source of the data is openmaptiles.
 # - The Source Layer of the data is building.
-# - The fill is rendered with a color of #f2eae2. (A light brown color) when the zoom level is 15.5 or less.
-# - The fill is rendered with a color of #dfdbd7. (A light brown color) when the zoom level is 16 or more.
+# - The fill is rendered with a color of #f2eae2. (A light gray color)
 #
 
 id: building
@@ -25,10 +24,4 @@ source: openmaptiles
 source-layer: building
 paint:
   fill-antialias: true
-  fill-color:
-    base: 1
-    stops:
-      - - 15.5
-        - '#f2eae2'
-      - - 16
-        - '#dfdbd7'
+  fill-color: '#f2eae2'

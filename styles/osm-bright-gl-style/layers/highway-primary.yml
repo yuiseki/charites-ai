@@ -1,3 +1,24 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - place-highway-1.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the names of highways on the map in light yellow color.
+#
+# Description of this style:
+# - This style is used to render the names of highways on the map.
+# - The names of highways are rendered with a text.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is place.
+# - The text is rendered when not brunnel, bridge, tunnel, or ramp. Because not brunnel, bridge, tunnel, or ramp, the feature is not primary highway.
+# - The text is rendered when the class is primary. Because the class is primary, the feature is a primary highway.
+# - The text is rendered when the rank is 1. Because the rank is 1, the names are the primary names of the highways.
+# - The text is rendered with a color of #fea. (A light yellow color)
+#
+
 id: highway-primary
 type: line
 metadata:

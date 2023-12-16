@@ -1,0 +1,37 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - landcover-park-green.yml
+#
+# Concise instructions of this style in a few words:
+# - Show parks and green areas on the map in a light green color.
+#
+# Description of this style:
+# - This style is used to render parks and green areas on the map.
+# - The parks and green areas are rendered with a fill.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is landcover.
+# - The fill is rendered when the class is park or grass. Because the class is park or grass, the landcover is a park or grass area.
+# - The fill is rendered with a color of #d8e8c8. (A light green color)
+# - The fill is rendered with an opacity of 0.8.
+#
+
+id: landcover-park-green
+type: fill
+metadata:
+  mapbox:group: '1444849388993.3071'
+source: openmaptiles
+source-layer: landcover
+filter:
+  - any
+  - - '=='
+    - class
+    - park
+  - - '=='
+    - class
+    - grass
+paint:
+  fill-color: '#d8e8c8'
+  fill-opacity: 0.8

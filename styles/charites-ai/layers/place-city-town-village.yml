@@ -3,18 +3,17 @@
 # - styles/osm-bright-gl-style/layers
 #
 # File name of this style:
-# - place-city.yml
+# - place-city-town-village.yml
 #
 # Concise instructions of this style in a few words:
-# - Show the names of major cities in black.
+# - Display the names of cities, towns, villages, etc.
 #
 # Description of this style:
-# - This style is used to render the names of major cities on the map.
+# - This style is used to render the names of cities, towns, villages, and other similar places on the map.
 # - The names are rendered as text labels.
 # - The Source of the data is openmaptiles.
 # - The Source Layer of the data is place.
-# - The text labels are rendered when the class is city. Because the class is city, the names are city names.
-# - The text labels are rendered when the capital is not 2. Because the capital is not 2, the names are not the names of capital cities.
+# - The text labels are rendered when the class is city, town, village, hamlet, or suburb. Because the class is city, town, village, hamlet, or suburb, the names are names of these places.
 # - The text labels are rendered with a text field of {name:latin} {name:nonlatin}.
 # - The text labels are rendered with a text font of Open Sans Regular.
 # - The text labels are rendered with a text max width of 8.
@@ -26,7 +25,7 @@
 # - The text labels are rendered with a text halo width of 1.2.
 #
 
-id: place-city
+id: place-city-town-village
 type: symbol
 metadata:
   mapbox:group: '1444849242106.713'
@@ -34,12 +33,21 @@ source: openmaptiles
 source-layer: place
 filter:
   - all
-  - - '!='
-    - capital
-    - 2
   - - '=='
     - class
     - city
+  - - '=='
+    - class
+    - town
+  - - '=='
+    - class
+    - village
+  - - '=='
+    - class
+    - hamlet
+  - - '=='
+    - class
+    - suburb
 layout:
   text-field: |-
     {name:latin}

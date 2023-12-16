@@ -1,0 +1,59 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - boundary-country.yml
+#
+# Concise instructions of this style in a few words:
+# - Show the boundaries of countries in a black color.
+#
+# Description of this style:
+# - This style is used to render the boundaries of countries.
+# - The boundaries are rendered with lines.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is boundary.
+# - The lines are rendered when the admin_level is 2. Because the admin_level is 2, the boundaries are country boundaries.
+# - The lines are not rendered when the maritime is 1. Because the maritime is 1, the boundaries are maritime boundaries.
+# - The lines are not rendered when the disputed is 1. Because the disputed is 1, the boundaries are disputed boundaries.
+# - The lines are rendered with a round line cap.
+# - The lines are rendered with a round line join.
+# - The lines are rendered with a color of #000000. (Black color)
+# - The lines are rendered with a width of 0.6 pixels at zoom level 0 to 4.
+# - The lines are rendered with a width of 1.4 pixels at zoom level 4 to 5.
+# - The lines are rendered with a width of 2 pixels at zoom level 5 to 12.
+# - The lines are rendered with a width of 8 pixels at zoom level 12 and above.
+#
+
+id: boundary-country
+type: line
+source: openmaptiles
+source-layer: boundary
+filter:
+  - all
+  - - '=='
+    - admin_level
+    - 2
+  - - '!='
+    - maritime
+    - 1
+  - - '!='
+    - disputed
+    - 1
+layout:
+  line-cap: round
+  line-join: round
+  visibility: visible
+paint:
+  line-color: '#000000'
+  line-width:
+    base: 1
+    stops:
+      - - 0
+        - 0.6
+      - - 4
+        - 1.4
+      - - 5
+        - 2
+      - - 12
+        - 8

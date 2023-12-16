@@ -1,3 +1,26 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - railway.yml
+#
+# Concise instructions of this style in a few words:
+# - Show railways on the map in a light gray color as line.
+#
+# Description of this style:
+# - This style is used to render railways on the map.
+# - The railways are rendered with a line.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is transportation.
+# - The line is rendered when not brunnel, bridge, or tunnel. Because not brunnel, bridge, or tunnel, the feature is not a railway in a tunnel or on a bridge.
+# - The line is rendered when the class is rail. Because the class is rail, the feature is a railway.
+# - The line is rendered with a color of #bbb. (A light gray color)
+# - The line is rendered with a width of 0.4 when the zoom level is 14 or less.
+# - The line is rendered with a width of 0.75 when the zoom level is 15.
+# - The line is rendered with a width of 2 when the zoom level is 20 or more.
+#
+
 id: railway
 type: line
 metadata:

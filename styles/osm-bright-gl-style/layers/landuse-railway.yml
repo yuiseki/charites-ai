@@ -6,15 +6,15 @@
 # - landuse-railway.yml
 #
 # Concise instructions of this style in a few words:
-# - Show the railway as light yellow color.
+# - Show railway station on the map in a light gray color.
 #
 # Description of this style:
-# - This style is used to render the railway.
-# - The railway is rendered with a fill.
+# - This style is used to render the railway station.
+# - The railway station is rendered with a fill.
 # - The Source of the data is openmaptiles.
 # - The Source Layer of the data is landuse.
-# - The fill is rendered when the class is railway. Because the class is railway, the landuse is a railway.
-# - The fill is rendered with a color of #f5eec0. (A light yellow color)
+# - The fill is rendered when the class is railway. Because the class is railway, the landuse is a railway station.
+# - The fill is rendered with a color of hsla(30, 19%, 90%, 0.4). (A light gray color)
 # - The fill is rendered with an opacity of 0.4.
 #
 
