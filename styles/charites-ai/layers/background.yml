@@ -6,12 +6,12 @@
 # - background.yml
 #
 # Concise instructions of this style in a few words:
-# - Set the background color of the map to sand gray.
-# - Show the country background as sand gray color.
+# - Change the background color of the map to white.
+# - Show the country background as white color.
 #
 # Description of this style:
 # - This style is used to display the background of the map.
-# - The background is displayed in sand gray color.
+# - The background is displayed in white color.
 # - Important: To change the color of the country, you need to edit this background.yml file.
 # - Important: Changing or adding other files will not change the color of the country.
 # - Important: The color should be a valid hexadecimal color code like #000000 or #000.
@@ -19,4 +19,4 @@
 id: background
 type: background
 paint:
-  background-color: '#c2b280'
+  background-color: '#FFFFFF'

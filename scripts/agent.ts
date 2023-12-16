@@ -9,7 +9,7 @@ import { initializeCharitesAiChain, invokeCharitesAiChain } from "./embed.ts";
 import { OpenAIChat } from "langchain/llms/openai";
 
 const baseInstructions = `
-1. Set the background color of the map to sand gray.
+1. Set the background color of the map to light sand gray.
 2. Display the sea on the map.
 3. Show parks and green areas on the map in a light green color.
 4. Show the hospitals on the map in a light red color.
@@ -39,22 +39,27 @@ Your instructions should be includes correct and useful steps to create a map st
 
 IMPORTANT: You can only give up to ${limitOfInstructions} instructions to the map style creation AI.
 
+Note: You no need to draw rivers and lakes. Because, rivers and lakes are drawn same as the sea.
 Note: The order of the instructions is important. The instructions output first will be drawn below. So, you should output the instructions in the order you want them to be drawn.
 Note: Names of countries should be output the last. Because, the names of countries are drawn on top of the map.
-Note: You no need to draw rivers and lakes. Because, rivers and lakes are drawn same as the sea.
-Note: Please carefully output the instructions because it is limited ${limitOfInstructions} of instructions.
 
 Most important is, You must give instructions about the following objects in the last step of your instructions:
-- border of states, provinces, prefectures, etc. It is admin_level=4 in OpenStreetMap.
-- border of countries. It is admin_level=2 in OpenStreetMap.
+- boundary of states, provinces, prefectures, etc. It is admin_level=4 in OpenStreetMap.
+- boundary of countries. It is admin_level=2 in OpenStreetMap.
 - name of cities, towns, villages, etc.
 - name of states, provinces, prefectures, etc.
 - name of countries
+
+Note: Number of instructions is limited, so you must output only most important instructions.
+Note: Again, The order of the instructions is important. The instructions output first will be drawn below. So, you should output the instructions in the order you want them to be drawn.
+Note: So, you should not output the instructions about buildings and roads at the end.
 
 Your Instructions:
 ${baseInstructions}
 `
 );
+
+const chain = await initializeCharitesAiChain();
 
 const llm = new OpenAIChat({ temperature: 0 });
 const prompt = await charitesAiAgentPromptTemplate.format({});
@@ -63,8 +68,6 @@ const convertedResult = `${baseInstructions}${result}`;
 
 console.info(convertedResult);
 console.info("");
-
-const chain = await initializeCharitesAiChain();
 
 const instructions = convertedResult
   .split("\n")

@@ -40,11 +40,12 @@ function App() {
     >
       <Map
         initialViewState={{
-          longitude: 131,
-          latitude: 46,
+          longitude: 139.7673068,
+          latitude: 35.6809591,
           zoom: 6,
         }}
         style={{ position: "absolute", width: "100%", height: "100%" }}
+        hash={true}
         mapStyle={mapStyle}
       />
     </div>
