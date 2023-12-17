@@ -45,7 +45,7 @@ function App() {
           zoom: 6,
         }}
         style={{ position: "absolute", width: "100%", height: "100%" }}
-        hash={true}
+        hash={false}
         mapStyle={mapStyle}
       />
     </div>
