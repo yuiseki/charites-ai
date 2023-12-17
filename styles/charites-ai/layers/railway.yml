@@ -1,0 +1,49 @@
+# !charites-ai
+# Directory path of this style:
+# - styles/osm-bright-gl-style/layers
+#
+# File name of this style:
+# - railway.yml
+#
+# Concise instructions of this style in a few words:
+# - Display railways on the map in dark blue color with about 80% opacity if zoom level is 10 or more.
+#
+# Description of this style:
+# - This style is used to render railways on the map.
+# - The railways are rendered with a line.
+# - The Source of the data is openmaptiles.
+# - The Source Layer of the data is transportation.
+# - The line is rendered when the class is rail. Because the class is rail, the feature is a railway.
+# - The line is rendered with an opacity of 0.8.
+# - The line is rendered with a width of 0.5 when the zoom level is 10 or less.
+# - The line is rendered with a width of 1 when the zoom level is 11.
+# - The line is rendered with a width of 2 when the zoom level is 20 or more.
+#
+
+id: railway
+type: line
+minzoom: 10
+metadata:
+  mapbox:group: '1444849345966.4436'
+source: openmaptiles
+source-layer: transportation
+filter:
+  - all
+  - - '=='
+    - $type
+    - LineString
+  - - '=='
+    - class
+    - rail
+paint:
+  line-color: '#0000aa'
+  line-opacity: 0.6
+  line-width:
+    base: 1.4
+    stops:
+      - - 10
+        - 0.5
+      - - 11
+        - 1
+      - - 20
+        - 2

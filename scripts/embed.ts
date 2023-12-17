@@ -10,6 +10,8 @@ import {
 } from "langchain/prompts";
 import { OpenAIChat } from "langchain/llms/openai";
 import fs from "node:fs/promises";
+// import crypto
+import crypto from "node:crypto";
 
 // import as types
 import { BaseLanguageModel } from "langchain/base_language";
@@ -43,6 +45,7 @@ type styleInformation = {
   description: string[];
   yaml: string[];
   lines: string[];
+  md5Hash: string;
 };
 
 // styleYamlFilePathsを読み込んでstyleInformation型の配列にして返す関数
@@ -60,6 +63,7 @@ const loadStyleInformations = async (
     // } を }} に置換する
     const lines = styleYaml.replace(/{/g, "{{").replace(/}/g, "}}").split("\n");
 
+    // dirName
     // # Directory path of this style: と書かれた行の位置を取得する
     const styleDirNameLineIndex = lines.findIndex((line) =>
       line.startsWith("# Directory path of this style:")
@@ -69,6 +73,7 @@ const loadStyleInformations = async (
     // ディレクトリ名を取得する
     const styleDirName = styleDirNameLine.split("- ")[1];
 
+    // fileName
     // # File name of this style: と書かれた行の位置を取得する
     const styleFileNameLineIndex = lines.findIndex((line) =>
       line.startsWith("# File name of this style:")
@@ -77,6 +82,8 @@ const loadStyleInformations = async (
     const styleFileNameLine = lines[styleFileNameLineIndex + 1];
     // ファイル名を取得する
     const styleFileName = styleFileNameLine.split("- ")[1];
+
+    // instructions
     // Concise instructions of this style in a few words: と書かれた行の位置を取得する
     const styleInstructionsLineIndex = lines.findIndex((line) =>
       line.startsWith("# Concise instructions of this style in a few words:")
@@ -91,6 +98,8 @@ const loadStyleInformations = async (
     const styleInstructions = styleInstructionsLines.map((line) =>
       line.replace("# - ", "")
     );
+
+    // description
     // # Description of this style: と書かれた行の位置を取得する
     const styleDescriptionLineIndex = lines.findIndex((line) =>
       line.startsWith("# Description of this style:")
@@ -103,11 +112,17 @@ const loadStyleInformations = async (
       )
     );
     const styleDescription = styleDescriptionLines;
+
     // # で始まる行以外を取得する
     // 空行は除く
     const styleLines = lines.filter(
       (line) => !line.startsWith("#") && line !== ""
     );
+
+    // md5Hash
+    // styleYamlのmd5 hashを計算する
+    const md5Hash = crypto.createHash("md5").update(styleYaml).digest("hex");
+
     // styleInformation型に変換する
     const styleInformation: styleInformation = {
       dirName: styleDirName,
@@ -116,7 +131,9 @@ const loadStyleInformations = async (
       description: styleDescription,
       yaml: styleLines,
       lines: lines,
+      md5Hash: md5Hash,
     };
+
     styleInformations.push(styleInformation);
   }
   return styleInformations;
@@ -126,7 +143,19 @@ const setupCharitesAiDynamicPrompt = async (
   exampleStyleInformations: styleInformation[]
 ) => {
   // run embeddings
-  const embeddings = new OpenAIEmbeddings();
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY is not set");
+  }
+  let embeddings: OpenAIEmbeddings;
+  if (process.env.CLOUDFLARE_AI_GATEWAY) {
+    embeddings = new OpenAIEmbeddings({
+      configuration: {
+        baseURL: process.env.CLOUDFLARE_AI_GATEWAY + "/openai",
+      },
+    });
+  } else {
+    embeddings = new OpenAIEmbeddings();
+  }
   const memoryVectorStore = new MemoryVectorStore(embeddings);
   const exampleSelector = new SemanticSimilarityExampleSelector({
     vectorStore: memoryVectorStore,

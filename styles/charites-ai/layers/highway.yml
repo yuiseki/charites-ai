@@ -6,7 +6,7 @@
 # - highway.yml
 #
 # Concise instructions of this style in a few words:
-# - Display highways on the map in light yellow and opacity 50%.
+# - Display highways on the map in light yellow and opacity 50% if zoom level is 10 or more.
 #
 # Description of this style:
 # - This style is used to render highways on the map.
@@ -24,6 +24,7 @@
 
 id: highway
 type: line
+minzoom: 10
 metadata:
   mapbox:group: '1444849345966.4436'
 source: openmaptiles

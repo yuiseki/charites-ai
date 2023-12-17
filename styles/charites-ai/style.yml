@@ -13,12 +13,11 @@ layers:
   - !!inc/file layers/landcover-park-green.yml
   - !!inc/file layers/landuse-hospital.yml
   - !!inc/file layers/landuse-school.yml
-  - !!inc/file layers/railway-lines.yml
   - !!inc/file layers/highway.yml
+  - !!inc/file layers/railway.yml
   - !!inc/file layers/road-major.yml
   - !!inc/file layers/building.yml
   - !!inc/file layers/boundary-land-level-4.yml
   - !!inc/file layers/boundary-land-level-2.yml
   - !!inc/file layers/place-settlement.yml
-  - !!inc/file layers/place-labels-land-level-4.yml
   - !!inc/file layers/place-country-2.yml

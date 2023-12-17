@@ -107,26 +107,9 @@
       }
     },
     {
-      "id": "railway-lines",
-      "type": "line",
-      "metadata": {
-        "mapbox:group": "1444849345966.4436"
-      },
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "filter": [
-        "==",
-        "class",
-        "rail"
-      ],
-      "paint": {
-        "line-color": "#00008b",
-        "line-width": 1.5
-      }
-    },
-    {
       "id": "highway",
       "type": "line",
+      "minzoom": 10,
       "metadata": {
         "mapbox:group": "1444849345966.4436"
       },
@@ -176,8 +159,53 @@
       }
     },
     {
+      "id": "railway",
+      "type": "line",
+      "minzoom": 10,
+      "metadata": {
+        "mapbox:group": "1444849345966.4436"
+      },
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "==",
+          "class",
+          "rail"
+        ]
+      ],
+      "paint": {
+        "line-color": "#0000aa",
+        "line-opacity": 0.6,
+        "line-width": {
+          "base": 1.4,
+          "stops": [
+            [
+              10,
+              0.5
+            ],
+            [
+              11,
+              1
+            ],
+            [
+              20,
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
       "id": "road-major",
       "type": "line",
+      "minzoom": 10,
       "metadata": {
         "mapbox:group": "1444849345966.4436"
       },
@@ -237,7 +265,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "boundary",
-      "minzoom": 2,
+      "minzoom": 5,
       "filter": [
         "all",
         [
@@ -383,6 +411,50 @@
         "text-color": "#333",
         "text-halo-color": "rgba(255,255,255,0.8)",
         "text-halo-width": 1.2
+      }
+    },
+    {
+      "id": "place-country-2",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "1444849242106.713"
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "country"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:latin}",
+        "text-font": [
+          "Open Sans Regular"
+        ],
+        "text-max-width": 6.25,
+        "text-size": {
+          "stops": [
+            [
+              1,
+              11
+            ],
+            [
+              4,
+              17
+            ]
+          ]
+        },
+        "text-transform": "uppercase",
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "#333333",
+        "text-halo-blur": 1,
+        "text-halo-color": "rgba(255,255,255,0.8)",
+        "text-halo-width": 2
       }
     }
   ]

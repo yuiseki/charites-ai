@@ -6,13 +6,15 @@
 # - road-major.yml
 #
 # Concise instructions of this style in a few words:
-# - Show major roads on the map in a medium gray color.
+# - Show major roads on the map in a medium gray color if zoom level is 10 or more.
 #
 # Description of this style:
 # - This style is used to render major roads on the map.
 # - The major roads are rendered with a line.
+# - The minimum zoom level is 10. This means that the major roads are not rendered when the zoom level is less than 10.
 # - The Source of the data is openmaptiles.
 # - The Source Layer of the data is transportation.
+# - The line is rendered when the type is LineString. Because the type is LineString, the feature is a line.
 # - The line is rendered when the class is motorway, trunk, or primary. Because the class is motorway, trunk, or primary, the feature is a major road.
 # - The line is rendered with a color of #888. (A medium gray color)
 # - The line is rendered with a width of 0.75 when the zoom level is 10 or less.
@@ -22,6 +24,7 @@
 
 id: road-major
 type: line
+minzoom: 10
 metadata:
   mapbox:group: '1444849345966.4436'
 source: openmaptiles

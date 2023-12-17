@@ -6,9 +6,9 @@
 # - boundary-land-level-4.yml
 #
 # Concise instructions of this style in a few words:
-# - Show the boundary of the states as dashed gray lines.
-# - Show the boundary of the provinces as dashed gray lines.
-# - Show the boundary of the prefectures as dashed gray lines.
+# - Show the boundary of the states as dashed gray lines if zoom level is 5 or more.
+# - Show the boundary of the provinces as dashed gray lines if zoom level is 5 or more.
+# - Show the boundary of the prefectures as dashed gray lines if zoom level is 5 or more.
 #
 # Description of this style:
 # - This style is used to render the boundary of the states, provinces, and prefectures.
@@ -32,7 +32,7 @@ id: boundary-land-level-4
 type: line
 source: openmaptiles
 source-layer: boundary
-minzoom: 2
+minzoom: 5
 filter:
   - all
   - - '>='
