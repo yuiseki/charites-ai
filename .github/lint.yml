@@ -1,0 +1,20 @@
+on: push
+
+name: tsc
+jobs:
+  tsc:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Extract node version
+        run: echo "NODE_VERSION=$(cat .node_version)" >> $GITHUB_ENV
+      - name: Set Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: lint
+        run: npm run lint
