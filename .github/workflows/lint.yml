@@ -1,6 +1,6 @@
 on: push
 
-name: tsc
+name: lint
 jobs:
   tsc:
     runs-on: ubuntu-22.04
