@@ -1,0 +1,16 @@
+services:
+  base: &base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+  http_server:
+    <<: *base
+    ports:
+      - 127.0.0.1:5173:5173
+    command: npm run dev
+  style_watcher:
+    <<: *base
+    command: npm run watch-style
