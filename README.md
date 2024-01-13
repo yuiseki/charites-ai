@@ -1,6 +1,6 @@
 # charites-ai
 
-<a href="https://stackblitz.com/fork/github/yuiseki/charites-ai">
+<a href="https://stackblitz.com/github/yuiseki/charites-ai">
   <img
     alt="Open in StackBlitz"
     src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"
