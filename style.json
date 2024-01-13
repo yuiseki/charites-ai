@@ -451,7 +451,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "#333333",
+        "text-color": "#FF0000",
         "text-halo-blur": 1,
         "text-halo-color": "rgba(255,255,255,0.8)",
         "text-halo-width": 2
