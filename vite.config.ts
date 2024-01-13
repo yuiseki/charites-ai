@@ -5,4 +5,10 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: "/charites-ai/",
+  server: {
+    cors: true,
+  },
+  preview: {
+    cors: true,
+  },
 });

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
     "build-style": "npx charites build styles/charites-ai/style.yml public/style.json",
     "watch-style": "npx charites build -w styles/charites-ai/style.yml public/style.json",
