@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "npm run watch-style & vite --host",
     "build": "tsc && vite build",
     "build-style": "npx charites build styles/charites-ai/style.yml public/style.json",
     "watch-style": "npx charites build -w styles/charites-ai/style.yml public/style.json",
     "lint": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "embed": "node --loader ts-node/esm ./scripts/embed.ts",
+    "instruct": "node --loader ts-node/esm ./scripts/instruct.ts",
     "agent": "node --loader ts-node/esm ./scripts/agent.ts"
   },
   "dependencies": {
