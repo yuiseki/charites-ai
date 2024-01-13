@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host & npm run watch-style",
+    "dev": "concurrently 'npm run watch-style' 'vite --host'",
     "build": "tsc && vite build",
     "build-style": "npx charites build styles/charites-ai/style.yml public/style.json",
     "watch-style": "npx charites build -w styles/charites-ai/style.yml public/style.json",
@@ -28,6 +28,7 @@
     "@typescript-eslint/parser": "^6.10.0",
     "@unvt/charites": "^0.5.2",
     "@vitejs/plugin-react": "^4.2.0",
+    "concurrently": "^8.2.2",
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
