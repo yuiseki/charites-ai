@@ -1,5 +1,12 @@
 # charites-ai
 
+<a href="https://stackblitz.com/fork/github/yuiseki/charites-ai">
+  <img
+    alt="Open in StackBlitz"
+    src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"
+  />
+</a>
+
 ## これは何？
 
 - `charites-ai` は、自然言語による指示に基づいて、Mapbox style specification に従った json ファイルを生成することができる AI です
