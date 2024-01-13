@@ -34,7 +34,7 @@ pitch: 0
 sources:
   openmaptiles:
     type: vector
-    url: pmtiles://https://tile.openstreetmap.jp/static/planet.pmtiles
+    url: https://tile.openstreetmap.jp/data/planet.json
 sprite: https://openmaptiles.github.io/osm-bright-gl-style/sprite
 glyphs: https://tile.openstreetmap.jp/fonts/{fontstack}/{range}.pbf
 layers:

@@ -4,7 +4,7 @@ metadata: {}
 sources:
   openmaptiles:
     type: vector
-    url: pmtiles://https://tile.openstreetmap.jp/static/planet.pmtiles
+    url: https://tile.openstreetmap.jp/data/planet.json
 sprite: https://naogify.github.io/twemoji-sprites/icons
 glyphs: https://tile.openstreetmap.jp/fonts/{fontstack}/{range}.pbf
 layers:

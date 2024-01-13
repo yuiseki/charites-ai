@@ -5,7 +5,7 @@
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "pmtiles://https://tile.openstreetmap.jp/static/planet.pmtiles"
+      "url": "https://tile.openstreetmap.jp/data/planet.json"
     }
   },
   "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",

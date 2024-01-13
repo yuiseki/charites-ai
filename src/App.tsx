@@ -1,7 +1,5 @@
-import maplibregl from "maplibre-gl";
 import Map from "react-map-gl/maplibre";
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { Protocol } from "pmtiles";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -21,15 +19,6 @@ function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, [mapStyle]);
-
-  // pmtilesプロトコルを追加する
-  useEffect(() => {
-    const protocol = new Protocol();
-    maplibregl.addProtocol("pmtiles", protocol.tile);
-    return () => {
-      maplibregl.removeProtocol("pmtiles");
-    };
-  }, []);
 
   return (
     <div
