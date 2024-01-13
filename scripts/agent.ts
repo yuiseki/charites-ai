@@ -5,8 +5,11 @@
 
 import { PromptTemplate } from "langchain/prompts";
 // ts-nodeでembed.tsからinvokeCharitesAiChainをimportするには.tsが必要！
-import { initializeCharitesAiChain, invokeCharitesAiChain } from "./embed.ts";
-import { OpenAIChat } from "langchain/llms/openai";
+import {
+  initializeCharitesAiChain,
+  invokeCharitesAiChain,
+} from "./instruct.ts";
+import { ChatOpenAI } from "@langchain/openai";
 
 const baseInstructions = `
 1. Set the background color of the map to light sand gray.
@@ -61,7 +64,7 @@ ${baseInstructions}
 
 const chain = await initializeCharitesAiChain();
 
-const llm = new OpenAIChat({ temperature: 0 });
+const llm = new ChatOpenAI({ temperature: 0 });
 const prompt = await charitesAiAgentPromptTemplate.format({});
 const result = await llm.invoke(prompt);
 const convertedResult = `${baseInstructions}${result}`;

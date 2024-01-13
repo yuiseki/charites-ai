@@ -1,21 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import process
 import process from "node:process";
+import { PromptTemplate, FewShotPromptTemplate } from "@langchain/core/prompts";
+import { SemanticSimilarityExampleSelector } from "@langchain/core/example_selectors";
+import { ChatOpenAI } from "@langchain/openai";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import {
-  SemanticSimilarityExampleSelector,
-  PromptTemplate,
-  FewShotPromptTemplate,
-} from "langchain/prompts";
-import { OpenAIChat } from "langchain/llms/openai";
-import fs from "node:fs/promises";
-// import crypto
-import crypto from "node:crypto";
-
-// import as types
 import { BaseLanguageModel } from "langchain/base_language";
 import { RunnableSequence } from "langchain/schema/runnable";
+
+import fs from "node:fs/promises";
+import crypto from "node:crypto";
 
 // styles/**/*.yml or *.yaml を配列に読み込んで返す関数
 const loadStyleYamlFilePaths = async (): Promise<string[]> => {
@@ -332,7 +327,7 @@ export const initializeCharitesAiChain = async (): Promise<
   console.debug("loading charites-ai chain...");
   console.debug("");
 
-  const llm = new OpenAIChat({ temperature: 0 });
+  const llm = new ChatOpenAI({ temperature: 0 });
   const chain = await loadCharitesAiChain({ llm, exampleStyleInformations });
   console.debug("charites-ai chain loaded.");
   console.debug("");
