@@ -5,7 +5,7 @@ import { PromptTemplate, FewShotPromptTemplate } from "@langchain/core/prompts";
 import { SemanticSimilarityExampleSelector } from "@langchain/core/example_selectors";
 import { ChatOpenAI } from "@langchain/openai";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { OpenAIEmbeddings } from "@langchain/openai";
 import { BaseLanguageModel } from "langchain/base_language";
 import { RunnableSequence } from "langchain/schema/runnable";
 
@@ -223,7 +223,7 @@ export const invokeCharitesAiChain = async (
   chain: RunnableSequence<any, any>,
   input: string
 ): Promise<void> => {
-  const result = await chain.invoke({
+  const { content: result } = await chain.invoke({
     input: input,
   });
   console.info(result);
