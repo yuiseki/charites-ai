@@ -7,6 +7,13 @@
   />
 </a>
 
+<a href="https://pr.new/github.com/~/github/yuiseki/charites-ai/edit/main/README.md">
+  <img
+    alt="Edit in Web Publisher"
+    src="https://developer.stackblitz.com/img/edit_in_web_publisher.svg"
+  />
+</a>
+
 ## これは何？
 
 - `charites-ai` は、自然言語による指示に基づいて、Mapbox style specification に従った json ファイルを生成することができる AI です
