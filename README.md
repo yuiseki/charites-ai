@@ -7,7 +7,7 @@
   />
 </a>
 
-<a href="https://pr.new/github.com/~/yuiseki/charites-ai/edit/main/README.md">
+<a href="https://pr.new/github.com/yuiseki/charites-ai/edit/main/README.md">
   <img
     alt="Edit in Web Publisher"
     src="https://developer.stackblitz.com/img/edit_in_web_publisher.svg"
