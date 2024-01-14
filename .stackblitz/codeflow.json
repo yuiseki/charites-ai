@@ -1,10 +1,10 @@
 {
     "bot": {
         "issues": {
-            "enabled": false
+            "enabled": true
         },
         "pullRequests": {
-            "enabled": false
+            "enabled": true
         }
     }
 }
