@@ -69,7 +69,8 @@ let llm;
 if (process.env.OLLAMA_BASE_URL) {
   llm = new ChatOllama({
     baseUrl: process.env.OLLAMA_BASE_URL,
-    model: "deepseek-coder:1.3b-instruct",
+    model: process.env.OLLAMA_MODEL,
+    temperature: 0.0,
   });
 } else {
   if (!process.env.OPENAI_API_KEY) {
