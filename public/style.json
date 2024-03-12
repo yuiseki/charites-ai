@@ -73,40 +73,6 @@
       }
     },
     {
-      "id": "landuse-hospital",
-      "type": "fill",
-      "metadata": {
-        "mapbox:group": "1444849388993.3071"
-      },
-      "source": "openmaptiles",
-      "source-layer": "landuse",
-      "filter": [
-        "==",
-        "class",
-        "hospital"
-      ],
-      "paint": {
-        "fill-color": "#fdd"
-      }
-    },
-    {
-      "id": "landuse-school",
-      "type": "fill",
-      "metadata": {
-        "mapbox:group": "1444849388993.3071"
-      },
-      "source": "openmaptiles",
-      "source-layer": "landuse",
-      "filter": [
-        "==",
-        "class",
-        "school"
-      ],
-      "paint": {
-        "fill-color": "#f0e8f8"
-      }
-    },
-    {
       "id": "highway",
       "type": "line",
       "minzoom": 10,
@@ -248,6 +214,40 @@
       }
     },
     {
+      "id": "landuse-hospital",
+      "type": "fill",
+      "metadata": {
+        "mapbox:group": "1444849388993.3071"
+      },
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "filter": [
+        "==",
+        "class",
+        "hospital"
+      ],
+      "paint": {
+        "fill-color": "#fdd"
+      }
+    },
+    {
+      "id": "landuse-school",
+      "type": "fill",
+      "metadata": {
+        "mapbox:group": "1444849388993.3071"
+      },
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "filter": [
+        "==",
+        "class",
+        "school"
+      ],
+      "paint": {
+        "fill-color": "#f0e8f8"
+      }
+    },
+    {
       "id": "building",
       "type": "fill",
       "metadata": {
@@ -257,7 +257,8 @@
       "source-layer": "building",
       "paint": {
         "fill-antialias": true,
-        "fill-color": "#f2eae2"
+        "fill-color": "#f2eae2",
+        "fill-opacity": 0.4
       }
     },
     {
