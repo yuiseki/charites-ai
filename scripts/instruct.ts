@@ -140,7 +140,7 @@ const setupCharitesAiDynamicPrompt = async (
 ) => {
   // run embeddings
   let embeddings;
-  if (process.env.OLLAMA_BASE_URL) {
+  if (process.env.OLLAMA_BASE_URL && process.env.OLLAMA_ENABLED === "true") {
     embeddings = new OllamaEmbeddings({
       baseUrl: process.env.OLLAMA_BASE_URL,
       model: "all-minilm:l6-v2",
