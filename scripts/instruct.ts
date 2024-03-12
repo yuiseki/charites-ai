@@ -3,9 +3,10 @@
 import process from "node:process";
 import { PromptTemplate, FewShotPromptTemplate } from "@langchain/core/prompts";
 import { SemanticSimilarityExampleSelector } from "@langchain/core/example_selectors";
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
+import { ChatOllama } from "@langchain/community/chat_models/ollama";
+import { OllamaEmbeddings } from "@langchain/community/embeddings/ollama";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
-import { OpenAIEmbeddings } from "@langchain/openai";
 import { BaseLanguageModel } from "langchain/base_language";
 import { RunnableSequence } from "langchain/schema/runnable";
 
@@ -138,19 +139,27 @@ const setupCharitesAiDynamicPrompt = async (
   exampleStyleInformations: styleInformation[]
 ) => {
   // run embeddings
-  if (!process.env.OPENAI_API_KEY) {
-    throw new Error("OPENAI_API_KEY is not set");
-  }
-  let embeddings: OpenAIEmbeddings;
-  if (process.env.CLOUDFLARE_AI_GATEWAY) {
-    embeddings = new OpenAIEmbeddings({
-      configuration: {
-        baseURL: process.env.CLOUDFLARE_AI_GATEWAY + "/openai",
-      },
+  let embeddings;
+  if (process.env.OLLAMA_BASE_URL) {
+    embeddings = new OllamaEmbeddings({
+      baseUrl: process.env.OLLAMA_BASE_URL,
+      model: "all-minilm:l6-v2",
     });
   } else {
-    embeddings = new OpenAIEmbeddings();
+    if (process.env.CLOUDFLARE_AI_GATEWAY) {
+      embeddings = new OpenAIEmbeddings({
+        configuration: {
+          baseURL: process.env.CLOUDFLARE_AI_GATEWAY + "/openai",
+        },
+      });
+    } else {
+      if (!process.env.OPENAI_API_KEY) {
+        throw new Error("OPENAI_API_KEY is not set");
+      }
+      embeddings = new OpenAIEmbeddings();
+    }
   }
+
   const memoryVectorStore = new MemoryVectorStore(embeddings);
   const exampleSelector = new SemanticSimilarityExampleSelector({
     vectorStore: memoryVectorStore,
@@ -326,8 +335,28 @@ export const initializeCharitesAiChain = async (): Promise<
   console.debug("");
   console.debug("loading charites-ai chain...");
   console.debug("");
+  let llm;
+  if (process.env.OLLAMA_BASE_URL) {
+    llm = new ChatOllama({
+      baseUrl: process.env.OLLAMA_BASE_URL,
+      model: "deepseek-coder:1.3b-instruct",
+    });
+  } else {
+    if (process.env.CLOUDFLARE_AI_GATEWAY) {
+      llm = new ChatOpenAI({
+        configuration: {
+          baseURL: process.env.CLOUDFLARE_AI_GATEWAY + "/openai",
+        },
+        temperature: 0,
+      });
+    } else {
+      if (!process.env.OPENAI_API_KEY) {
+        throw new Error("OPENAI_API_KEY is not set");
+      }
+      llm = new ChatOpenAI({ temperature: 0 });
+    }
+  }
 
-  const llm = new ChatOpenAI({ temperature: 0 });
   const chain = await loadCharitesAiChain({ llm, exampleStyleInformations });
   console.debug("charites-ai chain loaded.");
   console.debug("");
