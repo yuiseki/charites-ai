@@ -10,6 +10,7 @@ import {
   invokeCharitesAiChain,
 } from "./instruct.ts";
 import { ChatOpenAI } from "@langchain/openai";
+import { ChatOllama } from "@langchain/community/chat_models/ollama";
 
 const baseInstructions = `
 1. Set the background color of the map to light sand gray.
@@ -64,7 +65,28 @@ ${baseInstructions}
 
 const chain = await initializeCharitesAiChain();
 
-const llm = new ChatOpenAI({ temperature: 0 });
+let llm;
+if (process.env.OLLAMA_BASE_URL) {
+  llm = new ChatOllama({
+    baseUrl: process.env.OLLAMA_BASE_URL,
+    model: "deepseek-coder:1.3b-instruct",
+  });
+} else {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY is not set");
+  }
+  if (process.env.CLOUDFLARE_AI_GATEWAY) {
+    llm = new ChatOpenAI({
+      configuration: {
+        baseURL: process.env.CLOUDFLARE_AI_GATEWAY + "/openai",
+      },
+      temperature: 0,
+    });
+  } else {
+    llm = new ChatOpenAI({ temperature: 0 });
+  }
+}
+
 const prompt = await charitesAiAgentPromptTemplate.format({});
 const result = await llm.invoke(prompt);
 const convertedResult = `${baseInstructions}${result}`;

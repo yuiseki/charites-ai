@@ -8,7 +8,7 @@ import { ChatOllama } from "@langchain/community/chat_models/ollama";
 import { OllamaEmbeddings } from "@langchain/community/embeddings/ollama";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { BaseLanguageModel } from "langchain/base_language";
-import { RunnableSequence } from "langchain/schema/runnable";
+import { Runnable } from "langchain/schema/runnable";
 
 import fs from "node:fs/promises";
 import crypto from "node:crypto";
@@ -146,6 +146,9 @@ const setupCharitesAiDynamicPrompt = async (
       model: "all-minilm:l6-v2",
     });
   } else {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY is not set");
+    }
     if (process.env.CLOUDFLARE_AI_GATEWAY) {
       embeddings = new OpenAIEmbeddings({
         configuration: {
@@ -153,9 +156,6 @@ const setupCharitesAiDynamicPrompt = async (
         },
       });
     } else {
-      if (!process.env.OPENAI_API_KEY) {
-        throw new Error("OPENAI_API_KEY is not set");
-      }
       embeddings = new OpenAIEmbeddings();
     }
   }
@@ -220,7 +220,7 @@ const loadCharitesAiChain = async ({
 }: {
   llm: BaseLanguageModel;
   exampleStyleInformations: styleInformation[];
-}): Promise<RunnableSequence<any, any>> => {
+}): Promise<Runnable<any, any>> => {
   const dynamicPrompt = await setupCharitesAiDynamicPrompt(
     exampleStyleInformations
   );
@@ -229,7 +229,7 @@ const loadCharitesAiChain = async ({
 };
 
 export const invokeCharitesAiChain = async (
-  chain: RunnableSequence<any, any>,
+  chain: Runnable<any, any>,
   input: string
 ): Promise<void> => {
   const { content: result } = await chain.invoke({
@@ -319,7 +319,7 @@ export const invokeCharitesAiChain = async (
 };
 
 export const initializeCharitesAiChain = async (): Promise<
-  RunnableSequence<any, any>
+  Runnable<any, any>
 > => {
   const styleYamlFilePaths = await loadStyleYamlFilePaths();
   console.debug("total styleYamlFilePaths: ", styleYamlFilePaths.length);
@@ -335,6 +335,7 @@ export const initializeCharitesAiChain = async (): Promise<
   console.debug("");
   console.debug("loading charites-ai chain...");
   console.debug("");
+
   let llm;
   if (process.env.OLLAMA_BASE_URL) {
     llm = new ChatOllama({
@@ -342,6 +343,9 @@ export const initializeCharitesAiChain = async (): Promise<
       model: "deepseek-coder:1.3b-instruct",
     });
   } else {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY is not set");
+    }
     if (process.env.CLOUDFLARE_AI_GATEWAY) {
       llm = new ChatOpenAI({
         configuration: {
@@ -350,9 +354,6 @@ export const initializeCharitesAiChain = async (): Promise<
         temperature: 0,
       });
     } else {
-      if (!process.env.OPENAI_API_KEY) {
-        throw new Error("OPENAI_API_KEY is not set");
-      }
       llm = new ChatOpenAI({ temperature: 0 });
     }
   }
