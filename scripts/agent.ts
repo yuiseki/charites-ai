@@ -66,7 +66,7 @@ ${baseInstructions}
 const chain = await initializeCharitesAiChain();
 
 let llm;
-if (process.env.OLLAMA_BASE_URL) {
+if (process.env.OLLAMA_BASE_URL && process.env.OLLAMA_ENABLED === "true") {
   llm = new ChatOllama({
     baseUrl: process.env.OLLAMA_BASE_URL,
     model: process.env.OLLAMA_MODEL,

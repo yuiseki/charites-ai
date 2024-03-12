@@ -337,7 +337,8 @@ export const initializeCharitesAiChain = async (): Promise<
   console.debug("");
 
   let llm;
-  if (process.env.OLLAMA_BASE_URL) {
+  console.log(process.env.OLLAMA_ENABLE);
+  if (process.env.OLLAMA_BASE_URL && process.env.OLLAMA_ENABLED === "true") {
     llm = new ChatOllama({
       baseUrl: process.env.OLLAMA_BASE_URL,
       model: process.env.OLLAMA_MODEL,
@@ -358,6 +359,7 @@ export const initializeCharitesAiChain = async (): Promise<
       llm = new ChatOpenAI({ temperature: 0 });
     }
   }
+  console.log("llm: ", llm.constructor.name);
 
   const chain = await loadCharitesAiChain({ llm, exampleStyleInformations });
   console.debug("charites-ai chain loaded.");
