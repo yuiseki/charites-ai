@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@langchain/core": "^0.2.0",
-    "@langchain/openai": "^0.0.31",
+    "@langchain/openai": "^0.1.0",
     "langchain": "^0.2.0",
     "maplibre-gl": "^4.0.0",
     "react": "^18.2.0",
