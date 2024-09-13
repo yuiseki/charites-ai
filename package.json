@@ -14,7 +14,7 @@
     "agent": "node --loader ts-node/esm ./scripts/agent.ts"
   },
   "dependencies": {
-    "@langchain/core": "^0.2.0",
+    "@langchain/core": "^0.3.0",
     "@langchain/openai": "^0.2.0",
     "langchain": "^0.2.0",
     "maplibre-gl": "^4.0.0",
