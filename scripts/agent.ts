@@ -69,7 +69,7 @@ let llm;
 if (process.env.OLLAMA_BASE_URL && process.env.OLLAMA_ENABLED === "true") {
   llm = new ChatOllama({
     baseUrl: process.env.OLLAMA_BASE_URL,
-    model: process.env.OLLAMA_MODEL,
+    model: process.env.OLLAMA_CHAT_MODEL,
     temperature: 0.0,
   });
 } else {

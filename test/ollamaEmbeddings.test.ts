@@ -3,10 +3,15 @@ import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import type { Document } from "@langchain/core/documents";
 import { expect, test } from "vitest";
 
+// process.env を .env.test から読み込む
+import process from "node:process";
+import { config } from "dotenv";
+config({ path: ".env.test" });
+
 test("ollama embedding", async () => {
   const embeddings = new OllamaEmbeddings({
-    baseUrl: "http://localhost:11434",
-    model: "all-minilm:l6-v2",
+    baseUrl: process.env.OLLAMA_BASE_URL,
+    model: process.env.OLLAMA_EMBED_MODEL,
   });
 
   const vectorStore = new MemoryVectorStore(embeddings);

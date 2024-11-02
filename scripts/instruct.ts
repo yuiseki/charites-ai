@@ -143,7 +143,7 @@ const setupCharitesAiDynamicPrompt = async (
   if (process.env.OLLAMA_BASE_URL && process.env.OLLAMA_ENABLED === "true") {
     embeddings = new OllamaEmbeddings({
       baseUrl: process.env.OLLAMA_BASE_URL,
-      model: "all-minilm:l6-v2",
+      model: process.env.OLLAMA_EMBED_MODEL,
     });
   } else {
     if (!process.env.OPENAI_API_KEY) {
@@ -341,7 +341,7 @@ export const initializeCharitesAiChain = async (): Promise<
   if (process.env.OLLAMA_BASE_URL && process.env.OLLAMA_ENABLED === "true") {
     llm = new ChatOllama({
       baseUrl: process.env.OLLAMA_BASE_URL,
-      model: process.env.OLLAMA_MODEL,
+      model: process.env.OLLAMA_CHAT_MODEL,
       temperature: 0.0,
     });
   } else {
