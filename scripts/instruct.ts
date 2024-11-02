@@ -4,11 +4,11 @@ import process from "node:process";
 import { PromptTemplate, FewShotPromptTemplate } from "@langchain/core/prompts";
 import { SemanticSimilarityExampleSelector } from "@langchain/core/example_selectors";
 import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
-import { ChatOllama } from "@langchain/community/chat_models/ollama";
-import { OllamaEmbeddings } from "@langchain/community/embeddings/ollama";
+import { ChatOllama } from "@langchain/ollama";
+import { OllamaEmbeddings } from "@langchain/ollama";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
-import { BaseLanguageModel } from "langchain/base_language";
-import { Runnable } from "langchain/schema/runnable";
+import { BaseLanguageModel } from "@langchain/core/language_models/base";
+import { Runnable } from "@langchain/core/runnables";
 
 import fs from "node:fs/promises";
 import crypto from "node:crypto";
