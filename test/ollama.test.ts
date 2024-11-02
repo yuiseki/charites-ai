@@ -10,6 +10,5 @@ test("ollama invoke", async () => {
 
   const answer = await llm.invoke(`why is the sky blue?`);
 
-  console.log(answer);
   expect(answer.length).toBeTruthy();
 });
