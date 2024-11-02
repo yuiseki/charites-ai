@@ -21,6 +21,7 @@ jobs:
           docker run -d -v ollama:/home/runner/.ollama -p 11434:11434 --name ollama ollama/ollama
           sleep 20
           docker exec ollama ollama pull gemma2:2b
+          docker exec ollama ollama pull all-minilm:l6-v2
           sleep 20
           time curl -i http://localhost:11434
       - name: Set up Node.js
