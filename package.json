@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently 'npm run watch-style' 'vite --host'",
     "build": "tsc && vite build",
-    "test": "vitest",
+    "test": "vitest run",
     "build-style": "npx charites build styles/charites-ai/style.yml public/style.json",
     "watch-style": "npx charites build -w styles/charites-ai/style.yml public/style.json",
     "lint": "tsc && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
