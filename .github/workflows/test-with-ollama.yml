@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - name: Run Ollama Docker image and pull gemma2:2b
+      - name: Run Ollama Docker image and pull models
         run: |
           mkdir -p ~/.ollama/models
           docker run -d -v ollama:/home/runner/.ollama -p 11434:11434 --name ollama ollama/ollama
