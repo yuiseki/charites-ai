@@ -4,7 +4,7 @@ import { expect, test } from "vitest";
 test("ollama invoke", async () => {
   const llm = new Ollama({
     baseUrl: "http://localhost:11434",
-    model: "gemma2:9b",
+    model: "gemma2:2b",
     temperature: 0.0,
   });
 

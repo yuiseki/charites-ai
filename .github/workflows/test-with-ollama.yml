@@ -6,7 +6,11 @@ on:
 
 jobs:
   test-with-ollama:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,9 +22,10 @@ jobs:
           docker exec ollama ollama pull gemma2:2b
           sleep 5
           time curl -i http://localhost:11434
-      - name: npm ci
-        run: |
-            npm ci
-      - name: npm run test
-        run: |
-            npm run test
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - run: npm ci
+      - run: npm run test
