@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir -p ~/.ollama/models
           docker run -d -v ollama:/home/runner/.ollama -p 11434:11434 --name ollama ollama/ollama
-          docker exec -it ollama ollama pull gemma2:2b
+          docker exec ollama ollama pull gemma2:2b
           sleep 5
           time curl -i http://localhost:11434
       - name: npm ci
