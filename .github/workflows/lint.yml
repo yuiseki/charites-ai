@@ -15,6 +15,6 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-      - run: npm ci
+      - run: npm ci -f
       - name: lint
         run: npm run lint
