@@ -6,6 +6,12 @@
     src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"
   />
 </a>
+<a href="https://app.codeanywhere.com/#https://github.com/yuiseki/charites-ai/blob/96dbedbfc1e4682c277f4a6fcd532c2a0bcea40e/README.md">
+  <img
+    alt="Open in Codeanywhere"
+    src="https://codeanywhere.com/img/open-in-codeanywhere-btn.svg"
+  />
+</a>
 
 ## これは何？
 
