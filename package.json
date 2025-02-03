@@ -23,7 +23,7 @@
     "maplibre-gl": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-map-gl": "^7.1.6",
+    "react-map-gl": "^8.0.0",
     "sharp": "^0.33.2"
   },
   "devDependencies": {
