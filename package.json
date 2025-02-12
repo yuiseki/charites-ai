@@ -17,7 +17,7 @@
   "dependencies": {
     "@langchain/community": "^0.3.11",
     "@langchain/core": "^0.3.0",
-    "@langchain/ollama": "^0.1.1",
+    "@langchain/ollama": "^0.2.0",
     "@langchain/openai": "^0.4.0",
     "langchain": "^0.3.0",
     "maplibre-gl": "^5.0.0",
