@@ -3,9 +3,12 @@
   "extends": ["config:base"],
   "packageRules": [
     {
+      "groupName": "map",
+      "matchPackageNames": ["react-map-gl", "maplibre-gl", "pmtiles"]
+    },
+    {
       "groupName": "react",
-      "matchPackageNames": ["@types/react", "@types/react-dom"],
-      "matchPackagePrefixes": ["react"]
+      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"]
     },
     {
       "groupName": "eslint",
