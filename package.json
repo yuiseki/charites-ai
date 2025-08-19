@@ -18,7 +18,7 @@
     "@langchain/community": "^0.3.11",
     "@langchain/core": "^0.3.0",
     "@langchain/ollama": "^0.2.0",
-    "@langchain/openai": "^0.5.0",
+    "@langchain/openai": "^0.6.0",
     "langchain": "^0.3.0",
     "maplibre-gl": "^5.0.0",
     "react": "^19.0.0",
