@@ -7,9 +7,16 @@
   />
 </a>
 
+<a href="https://codesandbox.io/p/github/yuiseki/charites-ai/main">
+  <img
+    alt="Edit in CodeSandbox"
+    src="https://codesandbox.io/static/img/play-codesandbox.svg"
+  />
+</a>
+
 ## これは何？
 
-- `charites-ai` は、自然言語による指示に基づいて、Mapbox style specification に従った json ファイルを生成することができる AI です
+- `charites-ai` は、自然言語による指示に基づいて、Maplibre style specification に従った json ファイルを生成することができる AI です
 - この AI は、[@unvt/charites](https://github.com/unvt/charites)を活用しています
 
 ## Demo
@@ -54,10 +61,10 @@ npm run instruct -- 国の名前を青色で表示して
 
 ## charites-ai の仕組み
 
-- Mapbox style specification に従った json ファイルは非常に巨大なものであるため、2023 年 12 月現在、LLMs で扱うことが困難です
-- charites は、複数に分割された YAML ファイルを結合して、Mapbox style specification に従った json ファイルを生成することができます
+- Maplibre style specification に従った json ファイルは非常に巨大なものであるため、2023 年 12 月現在、LLMs で扱うことが困難です
+- charites は、複数に分割された YAML ファイルを結合して、Maplibre style specification に従った json ファイルを生成することができます
 - charites-ai は、charites の機能を活用して、自然言語による指示に基づいて、それぞれの YAML ファイルを編集することができます
 - これを実現するために、それぞれの YAML ファイルに対して、詳細なコメントを追加しました
 - そして、それらのコメントを解析する処理を実装しました
 - 自然言語による指示が与えられたとき、charites-ai は、その指示に最も適した YAML ファイルを選択し、それを編集します
-- そして、charites が、編集された YAML ファイルを結合して、Mapbox style specification に従った json ファイルを生成します
+- そして、charites が、編集された YAML ファイルを結合して、Maplibre style specification に従った json ファイルを生成します
