@@ -6,7 +6,7 @@ import { SemanticSimilarityExampleSelector } from "@langchain/core/example_selec
 import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { ChatOllama } from "@langchain/ollama";
 import { OllamaEmbeddings } from "@langchain/ollama";
-import { MemoryVectorStore } from "langchain/vectorstores/memory";
+import { MemoryVectorStore } from "@langchain/classic/vectorstores/memory";
 import { BaseLanguageModel } from "@langchain/core/language_models/base";
 import { Runnable } from "@langchain/core/runnables";
 
@@ -239,7 +239,10 @@ export const invokeCharitesAiChain = async (
   console.info("");
 
   // resultに日本語が含まれている場合はエラーで終了する
-  if (result.match(/[ぁ-んァ-ン一-龥]/)) {
+  if (
+    result.match(/[ぁ-んァ-ン一-龥]/) &&
+    !(process.env.TESTING_MODE === "true")
+  ) {
     console.error(`Error: ${result} includes Japanese.`);
     process.exit(1);
   }
@@ -268,52 +271,60 @@ export const invokeCharitesAiChain = async (
   if (styleFileExists) {
     // 存在する場合はファイルを書き換える
     console.info("Update existing style YAML file", styleFilePath);
-    await fs.writeFile(styleFilePath, convertedResult + "\n");
+    if (process.env.TESTING_MODE === "true") {
+      console.info("Overwrite the existing style YAML file (TESTING_MODE).");
+    } else {
+      await fs.writeFile(styleFilePath, convertedResult + "\n");
+    }
   } else {
     // 存在しない場合はファイルに書き出したあとで
     // styles/charites-ai/style.yml を編集しなければならない
     console.info("Create new style YAML file", styleFilePath);
     console.info("");
-    await fs.writeFile(styleFilePath, convertedResult + "\n");
-    const styleFileRelativePath = styleFilePath.replace(
-      "styles/charites-ai/",
-      ""
-    );
-    // styles/charites-ai/style.yml を編集する
-    const stylesYamlDefineFilePath = "styles/charites-ai/style.yml";
-    const stylesYamlDefine = await fs.readFile(
-      stylesYamlDefineFilePath,
-      "utf-8"
-    );
-    const styleYamlDefineLines = stylesYamlDefine.split("\n");
-    // `  - !!inc/file existingStyleYamlFilePath` と書かれた行が多数あり、その最後の次の行に、
-    // `  - !!inc/file styleFileRelativePath`
-    // のように追加する
-    // そのため、`  - !!inc/file` で始まる最後の行の行数を取得する
-    const lastIncFileLineIndex = styleYamlDefineLines
-      .map((line, idx) => (line.startsWith("  - !!inc/file") ? idx : -1))
-      .filter((idx) => idx !== -1)
-      .pop();
-    // lastIncFileLineIndexがundefinedだったらファイルの末尾に追加する
-    if (lastIncFileLineIndex === undefined) {
-      styleYamlDefineLines.push(`  - !!inc/file ${styleFileRelativePath}`);
+    if (process.env.TESTING_MODE === "true") {
+      console.info("Write the new style YAML file (TESTING_MODE).");
     } else {
-      // 最後の行の次の行に、`  - !!inc/file styleFileRelativePath` を追加する
-      styleYamlDefineLines.splice(
-        lastIncFileLineIndex + 1,
-        0,
-        `  - !!inc/file ${styleFileRelativePath}`
+      await fs.writeFile(styleFilePath, convertedResult + "\n");
+      const styleFileRelativePath = styleFilePath.replace(
+        "styles/charites-ai/",
+        ""
+      );
+      // styles/charites-ai/style.yml を編集する
+      const stylesYamlDefineFilePath = "styles/charites-ai/style.yml";
+      const stylesYamlDefine = await fs.readFile(
+        stylesYamlDefineFilePath,
+        "utf-8"
+      );
+      const styleYamlDefineLines = stylesYamlDefine.split("\n");
+      // `  - !!inc/file existingStyleYamlFilePath` と書かれた行が多数あり、その最後の次の行に、
+      // `  - !!inc/file styleFileRelativePath`
+      // のように追加する
+      // そのため、`  - !!inc/file` で始まる最後の行の行数を取得する
+      const lastIncFileLineIndex = styleYamlDefineLines
+        .map((line, idx) => (line.startsWith("  - !!inc/file") ? idx : -1))
+        .filter((idx) => idx !== -1)
+        .pop();
+      // lastIncFileLineIndexがundefinedだったらファイルの末尾に追加する
+      if (lastIncFileLineIndex === undefined) {
+        styleYamlDefineLines.push(`  - !!inc/file ${styleFileRelativePath}`);
+      } else {
+        // 最後の行の次の行に、`  - !!inc/file styleFileRelativePath` を追加する
+        styleYamlDefineLines.splice(
+          lastIncFileLineIndex + 1,
+          0,
+          `  - !!inc/file ${styleFileRelativePath}`
+        );
+      }
+      console.debug(styleYamlDefineLines.join("\n"));
+      console.info(
+        "Update existing styles YAML define file",
+        stylesYamlDefineFilePath
+      );
+      await fs.writeFile(
+        stylesYamlDefineFilePath,
+        styleYamlDefineLines.join("\n")
       );
     }
-    console.debug(styleYamlDefineLines.join("\n"));
-    console.info(
-      "Update existing styles YAML define file",
-      stylesYamlDefineFilePath
-    );
-    await fs.writeFile(
-      stylesYamlDefineFilePath,
-      styleYamlDefineLines.join("\n")
-    );
   }
   console.info("charites-ai chain finished.");
 };
@@ -353,10 +364,18 @@ export const initializeCharitesAiChain = async (): Promise<
         configuration: {
           baseURL: process.env.CLOUDFLARE_AI_GATEWAY + "/openai",
         },
-        temperature: 0,
+        model: "gpt-5.1",
+        reasoning: {
+          effort: "none",
+        },
       });
     } else {
-      llm = new ChatOpenAI({ temperature: 0 });
+      llm = new ChatOpenAI({
+        model: "gpt-5.1",
+        reasoning: {
+          effort: "none",
+        },
+      });
     }
   }
   console.log("llm: ", llm.constructor.name);
