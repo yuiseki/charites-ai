@@ -15,11 +15,11 @@
     "agent": "node --loader ts-node/esm ./scripts/agent.ts"
   },
   "dependencies": {
-    "@langchain/community": "^0.3.11",
-    "@langchain/core": "^0.3.0",
-    "@langchain/ollama": "^0.2.0",
-    "@langchain/openai": "^0.6.0",
-    "langchain": "^0.3.0",
+    "@langchain/community": "^1.0.0",
+    "@langchain/core": "^1.0.0",
+    "@langchain/ollama": "^1.0.0",
+    "@langchain/openai": "^1.0.0",
+    "langchain": "^1.0.0",
     "maplibre-gl": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
