@@ -15,6 +15,7 @@
     "agent": "node --loader ts-node/esm ./scripts/agent.ts"
   },
   "dependencies": {
+    "@langchain/classic": "^1.0.4",
     "@langchain/community": "^1.0.0",
     "@langchain/core": "^1.0.0",
     "@langchain/ollama": "^1.0.0",

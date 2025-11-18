@@ -3,14 +3,14 @@
 // await invokeCharitesAiChain("地図に国の名前を表示してください")
 // のような感じで地図のスタイル定義を次々と実行するAI Agentを作成する
 
-import { PromptTemplate } from "langchain/prompts";
 // ts-nodeでembed.tsからinvokeCharitesAiChainをimportするには.tsが必要！
+import { PromptTemplate } from "@langchain/core/prompts";
 import {
   initializeCharitesAiChain,
   invokeCharitesAiChain,
 } from "./instruct.ts";
 import { ChatOpenAI } from "@langchain/openai";
-import { ChatOllama } from "@langchain/community/chat_models/ollama";
+import { ChatOllama } from "@langchain/ollama";
 
 const baseInstructions = `
 1. Set the background color of the map to light sand gray.
@@ -81,10 +81,18 @@ if (process.env.OLLAMA_BASE_URL && process.env.OLLAMA_ENABLED === "true") {
       configuration: {
         baseURL: process.env.CLOUDFLARE_AI_GATEWAY + "/openai",
       },
-      temperature: 0,
+      model: "gpt-5.1",
+      reasoning: {
+        effort: "none",
+      },
     });
   } else {
-    llm = new ChatOpenAI({ temperature: 0 });
+    llm = new ChatOpenAI({
+      model: "gpt-5.1",
+      reasoning: {
+        effort: "none",
+      },
+    });
   }
 }
 
