@@ -26,6 +26,7 @@
       "matchPackageNames": [
         "@types/eslint",
         "babel-eslint",
+        "typescript-eslint",
         "@typescript-eslint/{/,}**",
         "eslint{/,}**"
       ]
