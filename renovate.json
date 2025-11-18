@@ -1,25 +1,46 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": [
+    "config:recommended"
+  ],
   "packageRules": [
     {
       "groupName": "map",
-      "matchPackageNames": ["react-map-gl", "maplibre-gl", "pmtiles"]
+      "matchPackageNames": [
+        "react-map-gl",
+        "maplibre-gl",
+        "pmtiles"
+      ]
     },
     {
       "groupName": "react",
-      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"]
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ]
     },
     {
       "groupName": "eslint",
-      "matchPackageNames": ["@types/eslint", "babel-eslint"],
-      "matchPackagePrefixes": ["@typescript-eslint/", "eslint"]
+      "matchPackageNames": [
+        "@types/eslint",
+        "babel-eslint",
+        "@typescript-eslint/{/,}**",
+        "eslint{/,}**"
+      ]
     },
     {
       "groupName": "langchain",
-      "matchPackageNames": ["@langchain/community", "@langchain/core", "@langchain/openai", "@langchain/ollama", "langchain"],
-      "matchPackagePrefixes": ["@langchain/"]
+      "matchPackageNames": [
+        "langchain",
+        "@langchain/classic",
+        "@langchain/community",
+        "@langchain/core",
+        "@langchain/openai",
+        "@langchain/ollama",
+        "@langchain/{/,}**"
+      ]
     }
   ]
 }
-
