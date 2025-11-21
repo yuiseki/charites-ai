@@ -12,7 +12,7 @@ jobs:
   publish_gh_pages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
       - name: Extract node version

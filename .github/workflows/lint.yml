@@ -5,7 +5,7 @@ jobs:
   tsc:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
       - name: Extract node version
