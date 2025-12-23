@@ -17,10 +17,10 @@
   "dependencies": {
     "@langchain/classic": "^1.0.4",
     "@langchain/community": "^1.0.0",
-    "@langchain/core": "^1.0.0",
+    "@langchain/core": "^1.1.8",
     "@langchain/ollama": "^1.0.0",
     "@langchain/openai": "^1.0.0",
-    "langchain": "^1.0.0",
+    "langchain": "^1.2.3",
     "maplibre-gl": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
