@@ -21,7 +21,7 @@
     "@langchain/ollama": "^1.0.0",
     "@langchain/openai": "^1.0.0",
     "langchain": "^1.2.3",
-    "maplibre-gl": "^5.0.0",
+    "maplibre-gl": "^6.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-map-gl": "^8.0.0",
