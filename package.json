@@ -24,8 +24,7 @@
     "maplibre-gl": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-map-gl": "^8.0.0",
-    "sharp": "^0.35.4"
+    "react-map-gl": "^8.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
